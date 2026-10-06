@@ -1,0 +1,226 @@
+/dts-v1/;
+/plugin/;
+
+/*
+ * mx9pro-board.dts
+ *
+ * MX9Pro (RK3328, RTL8723BS combo WiFi/BT) board-specific delta on top of
+ * Armbian's generic rk3318-box profile.
+ *
+ * SOURCE OF TRUTH: every configuration value below (pin numbers, GPIO
+ * bank/pin, mux function, pull config, clock/reset IDs, the power
+ * sequence) is taken DIRECTLY from this board's own vendor device tree
+ * (extracted from the OEM LibreELEC firmware and reverse-engineered node
+ * by node over an extensive earlier investigation -- not borrowed from
+ * any other board's community overlay, not guessed). The only things
+ * taken from Armbian's own tree are the ATTACHMENT LABELS (&sdio,
+ * &sdio_ext, &sdmmc_ext, &gpio3, &cru) -- these are structural facts of
+ * Armbian's compiled dtb (confirmed present via Armbian's own official
+ * rk3318-box-wlan-ext overlay source and, where used earlier, by direct
+ * successful application on this exact box), used purely to locate WHERE
+ * in Armbian's tree our board-specific data attaches. The data itself is
+ * ours.
+ *
+ * Original vendor DTS facts this overlay encodes:
+ *   - WiFi SDIO lives on the alternate/ext controller (0xff5f0000), not
+ *     the primary SDIO slot. Confirmed: nothing is wired to the primary
+ *     slot on this board.
+ *   - SDIO pins: CLK=GPIO3_A2, CMD=GPIO3_A0, "dectn"=GPIO3_A1,
+ *     DATA0-3=GPIO3_A4-A7, mux function 3, pull-up-4mA on cmd/dectn/data,
+ *     pull-none-4mA on clk. (vendor DTS pinctrl group
+ *     "sdmmc0ext-clk/cmd/dectn/bus4")
+ *   - GPIO3_A4-A7 are the SAME physical pins as UART1's TX/RX/CTS/RTS --
+ *     this is why UART1 (Bluetooth) and full 4-bit WiFi cannot be active
+ *     simultaneously on this board without a runtime pin-remux switch
+ *     (separate, later concern -- see mx9pro-uart1-enable.dts comments).
+ *   - Combo chip shared enable/reset line: GPIO3_B0 (pin 8), named
+ *     "wifi_enable_h" in vendor pinctrl, driven via a real
+ *     mmc-pwrseq-simple reset PULSE: LOW at boot (reset asserted) ->
+ *     HIGH + 200ms settle immediately before the SDIO bus is first
+ *     touched (vendor DTS "sdio-pwrseq" node, reset-gpios flag=
+ *     GPIO_ACTIVE_LOW, post-power-on-delay-ms=200). CONFIRMED ON THIS
+ *     HARDWARE: a static always-on gpio-hog on this same pin (holding it
+ *     permanently HIGH from earliest boot, no edge) was NOT sufficient --
+ *     mmc3 still failed "Failed to initialize a non-removable card" even
+ *     with the hog verified physically HIGH. The chip needs the actual
+ *     LOW->HIGH transition to run its own internal init sequence. This
+ *     overlay reproduces the vendor's exact pulse.
+ *   - UART1 (serial@ff120000): enabled with zero pins claimed at boot,
+ *     so it doesn't fight WiFi for GPIO3_A4-A7 at startup. Confirmed
+ *     working: without this, WiFi's own SDIO node failed to claim its
+ *     bus4 pin group because UART1 (Armbian's own generic default,
+ *     unrelated to our overlay) had already grabbed them first.
+ *
+ * Armbian-side notes:
+ *   - Stock's own &sdio_pwrseq exists but is NOT used here -- it targets
+ *     a different physical GPIO (bank/pin decoded from this box's live
+ *     tree as phandle 0x4d / pin 18, i.e. a C-row pin, nothing like our
+ *     validated GPIO3_B0). It is very likely wired for a different board
+ *     Armbian's maintainers tested against (their own README references
+ *     "X88 Pro"). We do not touch or rely on it.
+ *   - &sdio (primary slot) and &sdmmc_ext (a third, separate node) are
+ *     disabled here. Nothing on MX9Pro is wired to either; this is
+ *     housekeeping to remove noise and rule out any latent pin
+ *     contention, not a functional requirement we've hit evidence for.
+ *
+ * Install:
+ *   sudo armbian-add-overlay mx9pro-board.dts
+ *   Ensure /boot/armbianEnv.txt has exactly:
+ *     user_overlays=mx9pro-board
+ *   (replaces mx9pro-uart1-enable, mx9pro-wifi-sdio, and the retired
+ *   mx9pro-wifibt-hog -- all consolidated into this one file)
+ *   sudo reboot
+ *
+ * Verify:
+ *   dmesg | grep -iE "sdio_ext|mmc3|mx9-sdio-pwrseq|rtl8723|gpio3-4|gpio3-8"
+ *   ip link show wlan0
+ *
+ * If armbian-add-overlay fails to compile: the error will name the exact
+ * unresolved label (&sdio / &sdio_ext / &sdmmc_ext / &gpio3 / &cru).
+ * Report the exact text back -- only the ATTACHMENT points are still
+ * unverified on this live box; the data itself is not in question.
+ */
+
+/ {
+	/* --- UART1: bound at boot, zero pins claimed --- */
+	fragment@0 {
+		target-path = "/serial@ff120000";
+		__overlay__ {
+			pinctrl-names = "default";
+			pinctrl-0 = <>;
+			status = "okay";
+		};
+	};
+
+	/* --- Board-specific pin groups for the WiFi SDIO_EXT bus --- */
+	fragment@1 {
+		target-path = "/pinctrl";
+		__overlay__ {
+			mx9_pcfg_pull_up_4ma: mx9-pcfg-pull-up-4ma {
+				bias-pull-up;
+				drive-strength = <4>;
+			};
+
+			mx9_pcfg_pull_none_4ma: mx9-pcfg-pull-none-4ma {
+				bias-disable;
+				drive-strength = <4>;
+			};
+
+			/* Matches vendor DTS "pcfg-pull-none" EXACTLY (bias-disable,
+			 * no explicit drive-strength -- SoC default). Distinct from
+			 * the -4ma preset above, which is only for the SDIO bus
+			 * pins, not this one.
+			 */
+			mx9_pcfg_pull_none: mx9-pcfg-pull-none {
+				bias-disable;
+			};
+
+			mx9pro-sdmmc0ext {
+				mx9_sdmmc0ext_clk: mx9-sdmmc0ext-clk {
+					rockchip,pins = <3 2 3 &mx9_pcfg_pull_none_4ma>;
+				};
+
+				mx9_sdmmc0ext_cmd: mx9-sdmmc0ext-cmd {
+					rockchip,pins = <3 0 3 &mx9_pcfg_pull_up_4ma>;
+				};
+
+				mx9_sdmmc0ext_dectn: mx9-sdmmc0ext-dectn {
+					rockchip,pins = <3 1 3 &mx9_pcfg_pull_up_4ma>;
+				};
+
+				mx9_sdmmc0ext_bus4: mx9-sdmmc0ext-bus4 {
+					rockchip,pins = <3 4 3 &mx9_pcfg_pull_up_4ma>,
+							 <3 5 3 &mx9_pcfg_pull_up_4ma>,
+							 <3 6 3 &mx9_pcfg_pull_up_4ma>,
+							 <3 7 3 &mx9_pcfg_pull_up_4ma>;
+				};
+			};
+
+			/* Vendor DTS "wifi_enable_h" pin group, reproduced exactly:
+			 * bank 3, pin 8, mux 0 (GPIO function), pull-none. Vendor's
+			 * own sdio-pwrseq explicitly claimed this pin group via
+			 * pinctrl-names/pinctrl-0 -- our overlay never did, instead
+			 * leaving GPIO3_B0 at whatever Armbian's own default pin
+			 * state happens to be (pull direction unknown/unverified).
+			 * If that default differs from the vendor's explicit
+			 * pull-none (e.g. an internal pull-down fighting our output
+			 * drive), it could be enough to prevent the WiFi chip from
+			 * ever seeing a clean, stable HIGH level during the power
+			 * pulse -- a very plausible explanation for the SDIO bus
+			 * never getting a response despite everything else checking
+			 * out structurally correct.
+			 */
+			mx9_wifi_enable_h: mx9-wifi-enable-h {
+				rockchip,pins = <3 8 0 &mx9_pcfg_pull_none>;
+			};
+		};
+	};
+
+	/* --- Primary SDIO slot: unused on MX9Pro, disabled for cleanliness --- */
+	fragment@2 {
+		target = <&sdio>;
+		__overlay__ {
+			mmc-pwrseq = <>;
+			status = "disabled";
+		};
+	};
+
+	/* --- WiFi: the alternate SDIO controller, MX9Pro's actual chip --- */
+	fragment@3 {
+		target = <&sdio_ext>;
+		__overlay__ {
+			/* v2: fully re-specified compatible/reg/interrupts/clocks/
+			 * resets against our own vendor-validated values, instead
+			 * of trusting stock's own &sdio_ext definition for these.
+			 * "Version ID is 270a" reading correctly in dmesg already
+			 * proved the BIU (bus interface) clock works either way --
+			 * but that says nothing about CIU (the actual SDIO bus
+			 * clock that drives CMD0/CMD5 toward the chip), CIU-drive,
+			 * CIU-sample, or the reset line. Those were never
+			 * independently confirmed while relying on stock's values.
+			 * Removing that assumption entirely now.
+			 */
+			compatible = "rockchip,rk3328-dw-mshc", "rockchip,rk3288-dw-mshc";
+			reg = <0x00 0xff5f0000 0x00 0x4000>;
+			interrupts = <0x00 0x04 0x04>;
+			clocks = <&cru 320>, <&cru 31>, <&cru 77>, <&cru 81>;
+			clock-names = "biu", "ciu", "ciu-drive", "ciu-sample";
+			fifo-depth = <0x100>;
+			resets = <&cru 104>;
+			reset-names = "reset";
+			status = "okay";
+			bus-width = <4>;
+			max-frequency = <150000000>;
+			cap-sd-highspeed;
+			cap-sdio-irq;
+			non-removable;
+			keep-power-in-suspend;
+			mmc-pwrseq = <&mx9_sdio_pwrseq>;
+			pinctrl-names = "default";
+			pinctrl-0 = <&mx9_sdmmc0ext_clk>, <&mx9_sdmmc0ext_cmd>,
+				    <&mx9_sdmmc0ext_dectn>, <&mx9_sdmmc0ext_bus4>;
+		};
+	};
+
+	/* --- Third, unused node -- disabled for cleanliness, same as above --- */
+	fragment@4 {
+		target = <&sdmmc_ext>;
+		__overlay__ {
+			status = "disabled";
+		};
+	};
+
+	/* --- Combo chip power sequence: OUR validated pin, real pulse --- */
+	fragment@5 {
+		target-path = "/";
+		__overlay__ {
+			mx9_sdio_pwrseq: mx9-sdio-pwrseq {
+				compatible = "mmc-pwrseq-simple";
+				pinctrl-names = "default";
+				pinctrl-0 = <&mx9_wifi_enable_h>;
+				reset-gpios = <&gpio3 8 1>;
+				post-power-on-delay-ms = <200>;
+			};
+		};
+	};
+};

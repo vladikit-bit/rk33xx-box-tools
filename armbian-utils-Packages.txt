@@ -1,0 +1,328 @@
+Package: bluez-firmware
+Priority: optional
+Section: non-free-firmware/kernel
+Installed-Size: 464
+Maintainer: Debian Bluetooth Maintainers <team+pkg-bluetooth@tracker.debian.org>
+Architecture: all
+Version: 1.2-9+rpt4
+Filename: pool/bookworm-utils/b/bluez-firmware/bluez-firmware_1.2-9+rpt4_all.deb
+Size: 289944
+MD5sum: 5a1bb663cc7ec5b70030d896bad3346f
+SHA1: c122d17e907eed124869818631466080fb435ddc
+SHA256: 65a20f5d47314b56346e95afef26392f11c8e6f4f0de1913d04df9858b5810ae
+SHA512: 6f1c196d833ca5a20e7f434174f2c6b0fa71417379fed60db39f70d99a6f0f84ec74eeff0476b3670d2f7d90fe3937a7a67d29127ca4bcf987a94f48089760a4
+Description: Firmware for Bluetooth devices
+ This firmware is required for operation of Bluetooth dongles based on
+ the Broadcom BCM203x and Raspberry Pi chipset.
+
+Package: firmware-brcm80211
+Priority: optional
+Section: non-free-firmware/kernel
+Installed-Size: 20359
+Maintainer: Debian Kernel Team <debian-kernel@lists.debian.org>
+Architecture: all
+Source: firmware-nonfree
+Version: 1:20240709-2~bpo12+1+rpt4
+Suggests: initramfs-tools
+Filename: pool/bookworm-utils/f/firmware-nonfree/firmware-brcm80211_20240709-2~bpo12+1+rpt4_all.deb
+Size: 5923912
+MD5sum: ee32f65a687b09c8ab3bf026f1f5fadb
+SHA1: c5bf990082dc232bacc01223d52d8ea96325d3e3
+SHA256: 8983b64a215ca672d33da8af5f8bf638e8f28a4264c11d04e5c6745e9830d19d
+SHA512: 6b3720d7c1a8598550f70c932f4ff0dfe23ea5cc1c0efd797f5008b6148a8e9656a38635388a620b989ab640a49d3499fbff79e6890f5edcc8ec4b46b9114a70
+Description: Binary firmware for Broadcom/Cypress 802.11 wireless cards
+ This package contains the binary firmware for wireless network cards
+ supported by the brcmsmac or brcmfmac driver.
+Homepage: https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git
+Multi-Arch: foreign
+
+Package: hello
+Priority: optional
+Section: devel
+Maintainer: Igor <igor@armbian.org>
+Architecture: all
+Version: 1.0
+Filename: pool/bookworm-utils/h/hello/example.deb
+Size: 740
+MD5sum: 09aed213b919538fe38e7e0c9a40f4da
+SHA1: 62fae99e3c9a4f099bbed454eb92799ab708d107
+SHA256: be3ef1db3700e1606c07fce9c5f3937a6deb28b77feaa7934664e4871c07b56c
+SHA512: 1adeeee086741f2e46d3554b92956b905ad55107d9967c495f2bc4656f6b2df06ea58b13022f8a331cf120484bcb861c9986f3db1e82c8a3ec728c39cbd704db
+Description: example package 
+
+Package: homeassistant-supervised
+Priority: optional
+Section: base
+Maintainer: Matheson Steplock <https://mathesonsteplock.ca/>
+Architecture: all
+Version: 3.0.0
+Depends: bluez, cifs-utils, nfs-common, iproute2
+Pre-Depends: curl, bash, docker-ce, dbus, network-manager, apparmor, jq, systemd, systemd-timesyncd, os-agent, systemd-journal-remote, systemd-resolved
+Filename: pool/bookworm-utils/h/homeassistant-supervised/homeassistant-supervised.deb
+Size: 7496
+MD5sum: 7aef716859232f6573941c7fde5c7eac
+SHA1: d8d8b8a0db5d9d42ecffd50eff7ed01792f0a9fe
+SHA256: aeb3acfc8868f16dd4cad283468a412fc98ddb240cf25e995d4f455efeac9dec
+SHA512: fc7bc5e03232f1cde241b97313d25d12a4fbb849aa306af54dda5e80ec9dc42a85df056a833a1a87fb60ce532479bafa516ce366f30fcd4304e2daf4ff0034f8
+Description: Home Assistant Supervised Armbian patched
+ This installation method provides the full Home Assistant experience on a regular operating system.
+ This means, all components from the Home Assistant method are used, except for the Home Assistant Operating System.
+ This system will run the Home Assistant Supervisor. The Supervisor is not just an application, it is a full appliance that manages the whole system.
+ It will clean up, repair or reset settings to default if they no longer match expected values.
+Homepage: https://www.home-assistant.io/
+
+Package: pacstall
+Priority: optional
+Section: Pacstall
+Installed-Size: 239
+Maintainer: Pacstall Team <pacstall@pm.me>
+Architecture: all
+Version: 5.2.1-pacstall1
+Depends: bash, curl, wget, git, unzip, zstd, tar, sensible-utils, iputils-ping, lsb-release, aptitude, bubblewrap, build-essential, jq, distro-info-data
+Suggests: axel, ninja-build, meson
+Filename: pool/bookworm-utils/p/pacstall/pacstall_5.2.1-pacstall1_all.deb
+Size: 51156
+MD5sum: 995f814eff03617856fea473f310fad2
+SHA1: e245f3c6b73eaf60224272fd34b998eb6ee86e0d
+SHA256: 118116d075c2602471ad611eb08901d4bbde4feeea0498ae750c5c18e48765ad
+SHA512: bf02bd5975f9effa68b10a53d2a4162dde4ae07b06aaf3bd9834a814b78eeab11e50bbf01fa2ca3b11ebd11c963a08d698ecc04528363cac03d171961f1b3c65
+Description: An AUR-inspired package manager for Ubuntu
+ Pacstall is the AUR Ubuntu wishes it had. It takes the concept of the AUR
+ and puts a spin on it, making it easier to install and update downstream programs,
+ without scouring github repos and the likes.
+Build-Depends: gzip, unzip
+Homepage: https://pacstall.dev
+Uploaders: Elsie19 <hwengerstickel@pm.me>
+
+Package: pi-bluetooth
+Priority: optional
+Section: misc
+Installed-Size: 28
+Maintainer: Serge Schneider <serge@raspberrypi.com>
+Architecture: all
+Version: 0.1.20
+Depends: bluez (>= 5.50-1.2~deb10u1+rpt1), bluez-firmware, raspberrypi-sys-mods
+Filename: pool/bookworm-utils/p/pi-bluetooth/pi-bluetooth_0.1.20_all.deb
+Size: 5488
+MD5sum: 656726fbbfef2235c76201e097678c80
+SHA1: 968c9e4ae2fea32b2bfc80816bf104f3104cccb1
+SHA256: e2d81ed46e01ba45182949cf6b9235d5998876648ebbfcfbe27213f912278f7f
+SHA512: 72888e6b1934f427c255cefb2333632ff3ee88e9867264403f8e7937af2c04afefcfcdfba2a1bed70060a3b1425e9378e2988a0e62a10204ea43b90409584bda
+Description: Raspberry Pi 3 bluetooth
+ Loads BCM43430A1 firmware on boot
+Homepage: https://github.com/RPi-Distro/pi-bluetooth
+
+Package: raspi-config
+Priority: optional
+Section: utils
+Installed-Size: 108
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+Original-Maintainer: Serge Schneider <serge@raspberrypi.com>
+Architecture: all
+Version: 20221214-0ubuntu1
+Depends: whiptail, parted, alsa-utils, psmisc, initramfs-tools
+Recommends: overlayroot, iw
+Filename: pool/bookworm-utils/r/raspi-config/raspi-config_20221214-0ubuntu1_all.deb
+Size: 22282
+MD5sum: 70077f048b34b1735d6c49f999e0ebe9
+SHA1: e4c72814c33f695f1f4a5d519d8e12e58c34b7a1
+SHA256: b3a36fbb1873cf28db7284a1629de7f643c3750731011626eddcf8f1d2c3e923
+SHA512: b1fdfaebe97da50b8fa6b0a03f1c5801dcc1ce87c7c7473d4b2c0481cdcacd07ca6cd46d10bbb19bd32409d9bd34978810d4bc848314e1b5adc2267b98823509
+Description: Raspberry Pi configuration tool
+ A simple configuration tool for common Raspberry Pi administrative tasks
+Homepage: https://github.com/RPi-Distro/raspi-config
+
+Package: raspi-firmware
+Priority: optional
+Section: non-free-firmware/misc
+Installed-Size: 22134
+Maintainer: Serge Schneider <serge@raspberrypi.com>
+Architecture: all
+Version: 1:1.20260915-1~bookworm
+Replaces: linux-firmware-raspi3 (<< 1.20161123-2), raspi3-firmware (<< 1.20190718-1~)
+Depends: dosfstools, rsync
+Pre-Depends: dpkg (>= 1.17.14)
+Suggests: firmware-brcm80211, firmware-misc-nonfree, bluez-firmware
+Breaks: linux-firmware-raspi3 (<< 1.20161123-2), raspi3-firmware (<< 1.20190718-1~)
+Filename: pool/bookworm-utils/r/raspi-firmware/raspi-firmware_1.20260915-1~bookworm_all.deb
+Size: 13032122
+MD5sum: 96d1b9b5f10dd3fb2270744945baab4e
+SHA1: 12e65b3b63c9d6dafd1c423d78e27d53ec56b700
+SHA256: 38f17381b60ffdfdb2aa51a2e365f26f3e4df8d0dbbb8a9e9c5a86de48085c29
+SHA512: 94036ce7cb764e82c2efdf724994965bec66e56a7b25885e963fd7bb78a490224991ce3ee1eebf1e0a1b27f0eb893c88d4fa594b0e67678cfefc78235055099b
+Description: Raspberry Pi family GPU firmware and bootloaders
+ This package contains all the proprietary files necessary to boot a
+ Raspberry Pi board.
+Homepage: https://github.com/raspberrypi/firmware
+
+Package: raspi-utils
+Priority: optional
+Section: utils
+Installed-Size: 14
+Maintainer: Serge Schneider <serge@raspberrypi.com>
+Architecture: all
+Version: 20251002-1~bookworm
+Depends: raspi-utils-core, raspi-utils-otp, raspi-utils-dt, raspi-utils-eeprom, raspinfo (>= 20240402-4)
+Filename: pool/bookworm-utils/r/raspi-utils/raspi-utils_20251002-1~bookworm_all.deb
+Size: 6720
+MD5sum: 8b640fdfa0b724b25dbaa81dfe3ab08d
+SHA1: 3e7204aa3ac9b2d8f0aec2f781d5ed8409884f28
+SHA256: a2ce14ad43d084d4fbf2b02646bbf9431227d422aa3865272339842f1df6e748
+SHA512: e63051c48e3c0922b66ae25590c987b29743d0db3e800f76ef48b2532064124032f2fb73b1eabb41eb6a9f8c926923a1654f9f95eb64bbcd042f1c3071d5dbc5
+Description: Collection of scripts and simple applications
+ This is a meta-package that installs all of utilities
+Homepage: https://github.com/raspberrypi/utils
+
+Package: raspi-utils-otp
+Priority: optional
+Section: utils
+Installed-Size: 21
+Maintainer: Serge Schneider <serge@raspberrypi.com>
+Architecture: all
+Source: raspi-utils
+Version: 20251002-1~bookworm
+Replaces: raspi-utils (<< 20240402-4)
+Depends: python3:any
+Breaks: raspi-utils (<< 20240402-4)
+Filename: pool/bookworm-utils/r/raspi-utils/raspi-utils-otp_20251002-1~bookworm_all.deb
+Size: 9152
+MD5sum: 9804204e7b2767622aac6c9a43b40fc3
+SHA1: dcb3dbdb6e03e6a1202c4ee9051691f586f62624
+SHA256: c150d9e213a6919626de10a7a48ac9da00d2c583c50f801e10ff9698f91d75f5
+SHA512: c82c2719cbcfe60d0dfc5ab88b6c39906cb65bd8e8f51e550db19346e6db12aad487079fee8e9dc7cba04873ba796c0a2f61b5fa3631cf88dcd20bedacd1d8b1
+Description: Tools for reading and setting Raspberry Pi OTP bits
+ A short script to help with reading and setting the customer OTP bits
+Homepage: https://github.com/raspberrypi/utils
+
+Package: raspinfo
+Priority: optional
+Section: utils
+Installed-Size: 21
+Maintainer: Serge Schneider <serge@raspberrypi.com>
+Architecture: all
+Source: raspi-utils
+Version: 20251002-1~bookworm
+Replaces: raspi-utils (<< 20240402-4)
+Depends: raspi-utils-core, net-tools, kms++-utils, rpi-eeprom, sudo, usbutils
+Recommends: pastebinit
+Breaks: raspi-utils (<< 20240402-4)
+Filename: pool/bookworm-utils/r/raspi-utils/raspinfo_20251002-1~bookworm_all.deb
+Size: 8824
+MD5sum: dffc674cf55e3252c0e4f13383f7b87e
+SHA1: f27651a347268509f5ff085d8ec86a85ed4fc506
+SHA256: 3157d900403ef168b2f20ebcbc37ec2e38bd887cc7dfe45d4e237b587db82225
+SHA512: 1b199fbf97c5fca36fd88c65c6a796d566425f8749f3f0ade03297756046dff3d4450d21d28340344aa12e59a76cf42aae8355e383f60dca3fa21f4574a5b0bf
+Description: Prints information about the Raspberry Pi for bug reports
+ A short script to dump information about the Pi. Intended for the
+ submission of bug reports
+Homepage: https://github.com/raspberrypi/utils
+
+Package: system-monitoring-center
+Priority: optional
+Section: utils
+Installed-Size: 1333
+Maintainer: Hakan Dündar <hakandundar34coding@gmail.com>
+Architecture: all
+Version: 2.26.0
+Depends: dmidecode, gir1.2-adw-1, gir1.2-glib-2.0, gir1.2-gtk-4.0, gir1.2-pango-1.0, hwdata, iproute2, python3 (>= 3.6), python3-cairo, python3-gi, python3-gi-cairo, util-linux (>= 2.31)
+Filename: pool/bookworm-utils/s/system-monitoring-center/system-monitoring-center_2.26.0_all.deb
+Size: 179140
+MD5sum: 92575cbf649bcc840c40c1fd93fafd04
+SHA1: 0c6441f6144871e6e9c73c297c0f98a5344c52c5
+SHA256: 945e8f9dfebbff2318783f00875d5ae9cb3cba97137962d7eb172908f19ed31d
+SHA512: 5c07d28e8a32cefabb4e39152459b0cd95b5116e67028c0dcb64af7b74dd2f0b593bf9479f7075c13623160cdaba3750b560541ba1bc4981d84d0226cbaa0cfc
+Description: Multi-featured system monitor
+ Provides information about CPU/RAM/Disk/Network/GPU performance, sensors,
+ processes, users, services and system.
+Homepage: https://github.com/hakandundar34coding/system-monitoring-center
+
+Package: zfs-dkms
+Priority: optional
+Section: contrib/kernel
+Installed-Size: 18636
+Maintainer: Debian ZFS on Linux maintainers <pkg-zfsonlinux-devel@alioth-lists.debian.net>
+Architecture: all
+Source: zfs-linux
+Version: 2.4.1-1
+Replaces: spl-dkms
+Provides: zfs-modules
+Depends: dkms (>= 3.0.11), file, libc6-dev | libc-dev, lsb-release, libpython3-stdlib, debconf (>= 0.5) | debconf-2.0
+Recommends: zfs-zed, zfsutils-linux (>= 2.4.1-1), linux-libc-dev (<< 6.20~), linux-libc-dev (>= 4.18~)
+Suggests: debhelper
+Breaks: spl-dkms (<< 0.8.0~rc1), zfs-fuse (<< 2.4.1-1)
+Filename: pool/bookworm-utils/z/zfs-linux/zfs-dkms_2.4.1-1_all.deb
+Size: 2485908
+MD5sum: 3da7ad69d580e41d122b1ba4e28394cc
+SHA1: 393251a1848c54a4bf4948354a7f200a25e3297c
+SHA256: f521f5924eb6ad7d11218b4714792f28a96ac44ec8855293fbe2bd3721589bed
+SHA512: bd421ea6ff3922ec420832b780d8078a5e6169fe0f3eabcdb3226999484e592bc95e4400caaea666fdc67a52e8027560a94226da0da7a8ed5fa1eba29a1bb1e9
+Description: OpenZFS filesystem kernel modules for Linux
+ OpenZFS is a storage platform that encompasses the functionality of
+ traditional filesystems and volume managers. It supports data checksums,
+ compression, encryption, snapshots, and more.
+ .
+ This DKMS package includes the SPA, DMU, ZVOL, and ZPL components of
+ OpenZFS.
+Homepage: https://zfsonlinux.org/
+Multi-Arch: foreign
+
+Package: zfs-dkms
+Priority: optional
+Section: contrib/kernel
+Installed-Size: 18297
+Maintainer: Debian ZFS on Linux maintainers <pkg-zfsonlinux-devel@alioth-lists.debian.net>
+Architecture: all
+Source: zfs-linux
+Version: 2.3.2-2
+Replaces: spl-dkms
+Provides: zfs-modules
+Depends: dkms (>= 3.0.11), file, libc6-dev | libc-dev, lsb-release, libpython3-stdlib, debconf (>= 0.5) | debconf-2.0
+Recommends: zfs-zed, zfsutils-linux (>= 2.3.2-2), linux-libc-dev (<< 6.15~), linux-libc-dev (>= 4.18~)
+Suggests: debhelper
+Breaks: spl-dkms (<< 0.8.0~rc1), zfs-fuse (<< 2.3.2-2)
+Filename: pool/bookworm-utils/z/zfs-linux/zfs-dkms_2.3.2-2_all.deb
+Size: 2452312
+MD5sum: ffc04597b1cfbd7ad6569ee1c61eb41b
+SHA1: c4eb6457cab49de2257482cebe39ac787ef6fb83
+SHA256: 71d79f602c24d5bfc6ed254bda108e04691fb38046d02d348a9f38398f73bc77
+SHA512: fe49a8859f4cb5995d2ef71c8b0c2b75a66e71a2b5c369a95cdad3d9678e70bb7eec334ba9d38758294fab4d24318bf95489df86396139558272858c0298417b
+Description: OpenZFS filesystem kernel modules for Linux
+ OpenZFS is a storage platform that encompasses the functionality of
+ traditional filesystems and volume managers. It supports data checksums,
+ compression, encryption, snapshots, and more.
+ .
+ This DKMS package includes the SPA, DMU, ZVOL, and ZPL components of
+ OpenZFS.
+Homepage: https://zfsonlinux.org/
+Multi-Arch: foreign
+
+Package: zfs-dkms
+Priority: optional
+Section: contrib/kernel
+Installed-Size: 18204
+Maintainer: Debian ZFS on Linux maintainers <pkg-zfsonlinux-devel@alioth-lists.debian.net>
+Architecture: all
+Source: zfs-linux
+Version: 2.3.2-2~bpo12+2
+Replaces: spl-dkms
+Provides: zfs-modules
+Depends: dkms (>= 3.0.3-4~), file, libc6-dev | libc-dev, lsb-release, libpython3-stdlib, debconf (>= 0.5) | debconf-2.0
+Recommends: zfs-zed, zfsutils-linux (>= 2.3.2-2~bpo12+2), linux-libc-dev (<< 6.15~), linux-libc-dev (>= 4.18~)
+Suggests: debhelper
+Breaks: spl-dkms (<< 0.8.0~rc1), zfs-fuse (<< 2.3.2-2~bpo12+2)
+Filename: pool/bookworm-utils/z/zfs-linux/zfs-dkms_2.3.2-2~bpo12+2_all.deb
+Size: 2446968
+MD5sum: f3e903366de8e93e3774c2937582c65d
+SHA1: 588c1de965d34f53597852b2a2de87f93f9447bc
+SHA256: b403a37d32cc677a74dab31587a2f04072f981c7fcd9c5773f6c8c5f69646e92
+SHA512: 17561197baf09bfbc9a6b8b67a0f5c61e5e21fef99d9b197e0c1927abf140fc82a5bb0646b1410565303fa64e8e02069c491ab5f746ebd1c0f20981cc69aa66e
+Description: OpenZFS filesystem kernel modules for Linux
+ OpenZFS is a storage platform that encompasses the functionality of
+ traditional filesystems and volume managers. It supports data checksums,
+ compression, encryption, snapshots, and more.
+ .
+ This DKMS package includes the SPA, DMU, ZVOL, and ZPL components of
+ OpenZFS.
+Homepage: https://zfsonlinux.org/
+Multi-Arch: foreign
+

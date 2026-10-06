@@ -1,0 +1,103 @@
+=== OUR BOOT (stock rk3318-box + mx9pro-board overlay) GRF 0x000-0x14c ===
+000: 00009540
+004: 00000101
+008: 00005005
+00c: 00000041
+010: 00001155
+014: 0000aa55
+018: 0000a88a
+01c: 00000108
+020: 00000505
+024: 00000600
+028: 00000000
+02c: 00000000
+030: 00000000
+034: 0000aa0a
+038: 000030db
+03c: 000000db
+040: 00000000
+044: 00000000
+048: 00002aaa
+04c: 00000000
+050: 00000405
+054: 00000000
+058: 00000000
+05c: 00000000
+060: 00000000
+064: 00000000
+068: 00000000
+06c: 00000000
+070: 00000000
+074: 00000000
+078: 00000000
+07c: 00000000
+080: 00000000
+084: 00000000
+088: 00000000
+08c: 00000000
+090: 00000000
+094: 00000000
+098: 00000000
+09c: 00000000
+0a0: 00000000
+0a4: 00000000
+0a8: 00000000
+0ac: 00000000
+0b0: 00000000
+0b4: 00000000
+0b8: 00000000
+0bc: 00000000
+0c0: 00000000
+0c4: 00000000
+0c8: 00000000
+0cc: 00000000
+0d0: 00000000
+0d4: 00000000
+0d8: 00000000
+0dc: 00000000
+0e0: 00000000
+0e4: 00000000
+0e8: 00000000
+0ec: 00000000
+0f0: 00000000
+0f4: 00000000
+0f8: 00000000
+0fc: 00000000
+100: 00004208
+104: 0000a868
+108: 00000a60
+10c: 00009a28
+110: 00008555
+114: 00000001
+118: 00000200
+11c: 0000a8a2
+120: 00009044
+124: 0000919a
+128: 00001565
+12c: 000055a0
+130: 00005585
+134: 00005aa8
+138: 00006155
+13c: 0000555a
+140: 00000000
+144: 00000000
+148: 00000000
+14c: 00000000
+
+=== pinconf pins 96-111 (OUR boot) ===
+pin 96 (gpio3-0): input bias pull up (1 ohms), output drive strength (4 mA), input schmitt enabled, mux (0x3)
+pin 97 (gpio3-1): input bias pull up (1 ohms), output drive strength (4 mA), input schmitt enabled, mux (0x3)
+pin 98 (gpio3-2): input bias disabled, output drive strength (4 mA), input schmitt enabled, mux (0x3)
+pin 99 (gpio3-3): input bias pull down (1 ohms), output drive strength (2 mA), input schmitt enabled, pin output (0 level), mux (0x0)
+pin 100 (gpio3-4): input bias pull up (1 ohms), output drive strength (4 mA), input schmitt enabled, mux (0x3)
+pin 101 (gpio3-5): input bias pull up (1 ohms), output drive strength (4 mA), input schmitt enabled, mux (0x3)
+pin 102 (gpio3-6): input bias pull up (1 ohms), output drive strength (4 mA), input schmitt enabled, mux (0x3)
+pin 103 (gpio3-7): input bias pull up (1 ohms), output drive strength (4 mA), input schmitt enabled, mux (0x3)
+pin 104 (gpio3-8): input bias disabled, output drive strength (2 mA), input schmitt enabled, pin output (0 level), mux (0x0)
+pin 105 (gpio3-9): input bias pull down (1 ohms), output drive strength (2 mA), input schmitt enabled, pin output (1 level), mux (0x0)
+pin 106 (gpio3-10): input bias pull down (1 ohms), output drive strength (2 mA), input schmitt enabled, pin output (0 level), mux (0x0)
+pin 107 (gpio3-11): input bias pull down (1 ohms), output drive strength (2 mA), input schmitt enabled, pin output (0 level), mux (0x0)
+pin 108 (gpio3-12): input bias pull down (1 ohms), output drive strength (2 mA), input schmitt enabled, pin output (0 level), mux (0x0)
+pin 109 (gpio3-13): input bias pull down (1 ohms), output drive strength (2 mA), input schmitt enabled, pin output (0 level), mux (0x0)
+pin 110 (gpio3-14): input bias pull up (1 ohms), output drive strength (2 mA), input schmitt enabled, pin output (1 level), mux (0x0)
+pin 111 (gpio3-15): input bias pull up (1 ohms), output drive strength (2 mA), input schmitt enabled, pin output (1 level), mux (0x0)

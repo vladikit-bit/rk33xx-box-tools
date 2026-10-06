@@ -1,0 +1,209 @@
+<stdout>: Warning (reg_format): /fragment@3/__overlay__:reg: property has invalid length (16 bytes) (#address-cells == 2, #size-cells == 1)
+<stdout>: Warning (unit_address_vs_reg): /fragment@3/__overlay__: node has a reg or ranges property, but no unit name
+<stdout>: Warning (pci_device_reg): Failed prerequisite 'reg_format'
+<stdout>: Warning (pci_device_bus_num): Failed prerequisite 'reg_format'
+<stdout>: Warning (simple_bus_reg): Failed prerequisite 'reg_format'
+<stdout>: Warning (i2c_bus_reg): Failed prerequisite 'reg_format'
+<stdout>: Warning (spi_bus_reg): Failed prerequisite 'reg_format'
+<stdout>: Warning (avoid_default_addr_size): /fragment@3/__overlay__: Relying on default #address-cells value
+<stdout>: Warning (avoid_default_addr_size): /fragment@3/__overlay__: Relying on default #size-cells value
+<stdout>: Warning (avoid_unnecessary_addr_size): Failed prerequisite 'avoid_default_addr_size'
+<stdout>: Warning (unique_unit_address): Failed prerequisite 'avoid_default_addr_size'
+<stdout>: Warning (clocks_property): /fragment@3/__overlay__:clocks: Could not get phandle node for (cell 1)
+<stdout>: Warning (resets_property): /fragment@3/__overlay__:resets: Could not get phandle node for (cell 1)
+<stdout>: Warning (gpios_property): /fragment@5/__overlay__/mx9-sdio-pwrseq: Missing property '#gpio-cells' in node /fragment@1/__overlay__/mx9pro-sdmmc0ext/mx9-sdmmc0ext-bus4 or bad phandle (referred from reset-gpios[1])
+<stdout>: Warning (interrupts_property): /fragment@3/__overlay__: Missing interrupt-parent
+/dts-v1/;
+
+/ {
+
+	fragment@0 {
+		target-path = "/serial@ff120000";
+
+		__overlay__ {
+			pinctrl-names = "default";
+			pinctrl-0;
+			status = "okay";
+		};
+	};
+
+	fragment@1 {
+		target-path = "/pinctrl";
+
+		__overlay__ {
+
+			mx9-pcfg-pull-up-4ma {
+				bias-pull-up;
+				drive-strength = <0x04>;
+				phandle = <0x02>;
+			};
+
+			mx9-pcfg-pull-none-4ma {
+				bias-disable;
+				drive-strength = <0x04>;
+				phandle = <0x01>;
+			};
+
+			mx9-pcfg-pull-none {
+				bias-disable;
+				phandle = <0x03>;
+			};
+
+			mx9pro-sdmmc0ext {
+
+				mx9-sdmmc0ext-clk {
+					rockchip,pins = <0x03 0x02 0x03 0x01>;
+					phandle = <0x05>;
+				};
+
+				mx9-sdmmc0ext-cmd {
+					rockchip,pins = <0x03 0x00 0x03 0x02>;
+					phandle = <0x06>;
+				};
+
+				mx9-sdmmc0ext-dectn {
+					rockchip,pins = <0x03 0x01 0x03 0x02>;
+					phandle = <0x07>;
+				};
+
+				mx9-sdmmc0ext-bus4 {
+					rockchip,pins = <0x03 0x04 0x03 0x02 0x03 0x05 0x03 0x02 0x03 0x06 0x03 0x02 0x03 0x07 0x03 0x02>;
+					phandle = <0x08>;
+				};
+			};
+
+			mx9-wifi-enable-h {
+				rockchip,pins = <0x03 0x08 0x00 0x03>;
+				phandle = <0x09>;
+			};
+		};
+	};
+
+	fragment@2 {
+		target = <0xffffffff>;
+
+		__overlay__ {
+			mmc-pwrseq;
+			status = "disabled";
+		};
+	};
+
+	fragment@3 {
+		target = <0xffffffff>;
+
+		__overlay__ {
+			compatible = "rockchip,rk3328-dw-mshc\0rockchip,rk3288-dw-mshc";
+			reg = <0x00 0xff5f0000 0x00 0x4000>;
+			interrupts = <0x00 0x04 0x04>;
+			clocks = <0xffffffff 0x140 0xffffffff 0x1f 0xffffffff 0x4d 0xffffffff 0x51>;
+			clock-names = "biu\0ciu\0ciu-drive\0ciu-sample";
+			fifo-depth = <0x100>;
+			resets = <0xffffffff 0x68>;
+			reset-names = "reset";
+			status = "okay";
+			bus-width = <0x04>;
+			max-frequency = <0x8f0d180>;
+			cap-sd-highspeed;
+			cap-sdio-irq;
+			non-removable;
+			keep-power-in-suspend;
+			mmc-pwrseq = <0x04>;
+			pinctrl-names = "default";
+			pinctrl-0 = <0x05 0x06 0x07 0x08>;
+		};
+	};
+
+	fragment@4 {
+		target = <0xffffffff>;
+
+		__overlay__ {
+			status = "disabled";
+		};
+	};
+
+	fragment@5 {
+		target-path = "/";
+
+		__overlay__ {
+
+			mx9-sdio-pwrseq {
+				compatible = "mmc-pwrseq-simple";
+				pinctrl-names = "default";
+				pinctrl-0 = <0x09>;
+				reset-gpios = <0xffffffff 0x08 0x01>;
+				post-power-on-delay-ms = <0xc8>;
+				phandle = <0x04>;
+			};
+		};
+	};
+
+	__symbols__ {
+		mx9_pcfg_pull_up_4ma = "/fragment@1/__overlay__/mx9-pcfg-pull-up-4ma";
+		mx9_pcfg_pull_none_4ma = "/fragment@1/__overlay__/mx9-pcfg-pull-none-4ma";
+		mx9_pcfg_pull_none = "/fragment@1/__overlay__/mx9-pcfg-pull-none";
+		mx9_sdmmc0ext_clk = "/fragment@1/__overlay__/mx9pro-sdmmc0ext/mx9-sdmmc0ext-clk";
+		mx9_sdmmc0ext_cmd = "/fragment@1/__overlay__/mx9pro-sdmmc0ext/mx9-sdmmc0ext-cmd";
+		mx9_sdmmc0ext_dectn = "/fragment@1/__overlay__/mx9pro-sdmmc0ext/mx9-sdmmc0ext-dectn";
+		mx9_sdmmc0ext_bus4 = "/fragment@1/__overlay__/mx9pro-sdmmc0ext/mx9-sdmmc0ext-bus4";
+		mx9_wifi_enable_h = "/fragment@1/__overlay__/mx9-wifi-enable-h";
+		mx9_sdio_pwrseq = "/fragment@5/__overlay__/mx9-sdio-pwrseq";
+	};
+
+	__fixups__ {
+		sdio = "/fragment@2:target:0";
+		sdio_ext = "/fragment@3:target:0";
+		cru = "/fragment@3/__overlay__:clocks:0\0/fragment@3/__overlay__:clocks:8\0/fragment@3/__overlay__:clocks:16\0/fragment@3/__overlay__:clocks:24\0/fragment@3/__overlay__:resets:0";
+		sdmmc_ext = "/fragment@4:target:0";
+		gpio3 = "/fragment@5/__overlay__/mx9-sdio-pwrseq:reset-gpios:0";
+	};
+
+	__local_fixups__ {
+
+		fragment@1 {
+
+			__overlay__ {
+
+				mx9pro-sdmmc0ext {
+
+					mx9-sdmmc0ext-clk {
+						rockchip,pins = <0x0c>;
+					};
+
+					mx9-sdmmc0ext-cmd {
+						rockchip,pins = <0x0c>;
+					};
+
+					mx9-sdmmc0ext-dectn {
+						rockchip,pins = <0x0c>;
+					};
+
+					mx9-sdmmc0ext-bus4 {
+						rockchip,pins = <0x0c 0x1c 0x2c 0x3c>;
+					};
+				};
+
+				mx9-wifi-enable-h {
+					rockchip,pins = <0x0c>;
+				};
+			};
+		};
+
+		fragment@3 {
+
+			__overlay__ {
+				mmc-pwrseq = <0x00>;
+				pinctrl-0 = <0x00 0x04 0x08 0x0c>;
+			};
+		};
+
+		fragment@5 {
+
+			__overlay__ {
+
+				mx9-sdio-pwrseq {
+					pinctrl-0 = <0x00>;
+				};
+			};
+		};
+	};
+};

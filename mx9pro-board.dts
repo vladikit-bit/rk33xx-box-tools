@@ -1,0 +1,176 @@
+/dts-v1/;
+/plugin/;
+
+/*
+ * mx9pro-board.dts  (v8)
+ *
+ * MX9Pro (RK3328, RTL8723BS combo WiFi/BT) board-specific delta on top of
+ * Armbian's generic rk3318-box profile.
+ *
+ * SOURCE OF TRUTH: every configuration value below (pin numbers, GPIO
+ * bank/pin, mux function, pull config, clock/reset IDs, the power
+ * sequence) is taken DIRECTLY from this board's own vendor device tree
+ * (extracted from the OEM LibreELEC firmware and verified on this exact
+ * hardware: the full vendor-based DTB enumerated the RTL8723BS over SDIO
+ * and produced a working wlan0 on THIS SAME Armbian kernel 6.18.44).
+ * The only things taken from Armbian's tree are the ATTACHMENT LABELS
+ * (&sdio, &sdio_ext, &sdmmc_ext, &gpio3, &cru) -- structural facts of
+ * Armbian's compiled dtb, used purely to locate WHERE our board-specific
+ * data attaches.
+ *
+ * !!! PINCTRL HIERARCHY WARNING (root cause of the "dead probe chain"
+ * regression in v7): the rockchip pinctrl driver registers pin groups
+ * ONLY as second-level children of /pinctrl (function -> group). A node
+ * with rockchip,pins placed DIRECTLY under /pinctrl is parsed as a
+ * FUNCTION node and registers zero groups; any device whose pinctrl-0
+ * then references it fails state lookup ("unable to find group for node
+ * ..."), its probe fails permanently, and -- because our sdio host
+ * defers on the missing pwrseq driver -- the whole WiFi probe chain
+ * never runs (no mmc host, no bus scan, empty gpiochip3). The pwrseq
+ * group below is therefore nested inside a function node "mx9-wifi".
+ *
+ * Vendor facts encoded here:
+ *   - WiFi SDIO lives on the alternate/ext controller (0xff5f0000),
+ *     node named sdio@ff5f0000 in Armbian's tree (label &sdio_ext).
+ *     NOTE: Armbian's stock rk3318-box dtb contains TWO nodes at this
+ *     address -- /mmc@ff5f0000 (label &sdmmc_ext) and /sdio@ff5f0000
+ *     (label &sdio_ext). The duplicate /mmc@ff5f0000 is disabled below;
+ *     the live platform device is ff5f0000.sdio.
+ *   - SDIO pins: CLK=GPIO3_A2, CMD=GPIO3_A0, dectn=GPIO3_A1,
+ *     DATA0-3=GPIO3_A4-A7, mux function 3, pull-up-4mA on cmd/dectn/
+ *     data, pull-none-4mA on clk (vendor group sdmmc0ext-*).
+ *   - Combo chip shared enable/reset line: GPIO3_B0 (bank3 pin 8),
+ *     vendor name "wifi_enable_h", via a real mmc-pwrseq-simple reset
+ *     pulse (GPIO_ACTIVE_LOW, post-power-on-delay-ms=200) -- the exact
+ *     vendor sequence that is confirmed to bring the chip up on this
+ *     hardware/kernel (the vendor-based DTB worked).
+ *   - UART1 (serial@ff120000): enabled with ZERO pins claimed at boot
+ *     (pinctrl-0 = <>), so it does not fight WiFi for GPIO3_A4-A7.
+ *     Confirmed working on this box (device binds, /dev/ttyS1 exists).
+ *
+ * Install:
+ *   sudo armbian-add-overlay mx9pro-board.dts
+ *   /boot/armbianEnv.txt: user_overlays=mx9pro-board   (only this one)
+ *   sudo reboot
+ */
+
+/ {
+	/* --- UART1: bound at boot, zero pins claimed --- */
+	fragment@0 {
+		target-path = "/serial@ff120000";
+		__overlay__ {
+			pinctrl-names = "default";
+			pinctrl-0 = <>;
+			status = "okay";
+		};
+	};
+
+	/* --- Board-specific pin groups for the WiFi SDIO_EXT bus --- */
+	fragment@1 {
+		target-path = "/pinctrl";
+		__overlay__ {
+			mx9_pcfg_pull_up_4ma: mx9-pcfg-pull-up-4ma {
+				bias-pull-up;
+				drive-strength = <4>;
+			};
+
+			mx9_pcfg_pull_none_4ma: mx9-pcfg-pull-none-4ma {
+				bias-disable;
+				drive-strength = <4>;
+			};
+
+			/* Vendor "pcfg-pull-none" (bias-disable, SoC default drive) */
+			mx9_pcfg_pull_none: mx9-pcfg-pull-none {
+				bias-disable;
+			};
+
+			mx9pro-sdmmc0ext {
+				mx9_sdmmc0ext_clk: mx9-sdmmc0ext-clk {
+					rockchip,pins = <3 2 3 &mx9_pcfg_pull_none_4ma>;
+				};
+
+				mx9_sdmmc0ext_cmd: mx9-sdmmc0ext-cmd {
+					rockchip,pins = <3 0 3 &mx9_pcfg_pull_up_4ma>;
+				};
+
+				mx9_sdmmc0ext_dectn: mx9-sdmmc0ext-dectn {
+					rockchip,pins = <3 1 3 &mx9_pcfg_pull_up_4ma>;
+				};
+
+				mx9_sdmmc0ext_bus4: mx9-sdmmc0ext-bus4 {
+					rockchip,pins = <3 4 3 &mx9_pcfg_pull_up_4ma>,
+						 <3 5 3 &mx9_pcfg_pull_up_4ma>,
+						 <3 6 3 &mx9_pcfg_pull_up_4ma>,
+						 <3 7 3 &mx9_pcfg_pull_up_4ma>;
+				};
+			};
+
+			/* Vendor "wifi_enable_h": bank 3 pin 8, mux 0 (GPIO),
+			 * pull-none. NESTED under function node "mx9-wifi" --
+			 * mandatory, see the hierarchy warning above.
+			 */
+			mx9-wifi {
+				mx9_wifi_enable_h: mx9-wifi-enable-h {
+					rockchip,pins = <3 8 0 &mx9_pcfg_pull_none>;
+				};
+			};
+		};
+	};
+
+	/* --- Primary SDIO slot (ff510000): unused on MX9Pro, disabled --- */
+	fragment@2 {
+		target = <&sdio>;
+		__overlay__ {
+			mmc-pwrseq = <>;
+			status = "disabled";
+		};
+	};
+
+	/* --- WiFi: the alternate SDIO controller, MX9Pro's actual chip --- */
+	fragment@3 {
+		target = <&sdio_ext>;
+		__overlay__ {
+			compatible = "rockchip,rk3328-dw-mshc", "rockchip,rk3288-dw-mshc";
+			reg = <0x00 0xff5f0000 0x00 0x4000>;
+			interrupts = <0x00 0x04 0x04>;
+			clocks = <&cru 320>, <&cru 31>, <&cru 77>, <&cru 81>;
+			clock-names = "biu", "ciu", "ciu-drive", "ciu-sample";
+			fifo-depth = <0x100>;
+			resets = <&cru 104>;
+			reset-names = "reset";
+			status = "okay";
+			bus-width = <4>;
+			max-frequency = <150000000>;
+			cap-sd-highspeed;
+			cap-sdio-irq;
+			non-removable;
+			keep-power-in-suspend;
+			mmc-pwrseq = <&mx9_sdio_pwrseq>;
+			pinctrl-names = "default";
+			pinctrl-0 = <&mx9_sdmmc0ext_clk>, <&mx9_sdmmc0ext_cmd>,
+				    <&mx9_sdmmc0ext_dectn>, <&mx9_sdmmc0ext_bus4>;
+		};
+	};
+
+	/* --- Stock duplicate node at the same address: disabled --- */
+	fragment@4 {
+		target = <&sdmmc_ext>;
+		__overlay__ {
+			status = "disabled";
+		};
+	};
+
+	/* --- Combo chip power sequence: OUR validated pin, real pulse --- */
+	fragment@5 {
+		target-path = "/";
+		__overlay__ {
+			mx9_sdio_pwrseq: mx9-sdio-pwrseq {
+				compatible = "mmc-pwrseq-simple";
+				pinctrl-names = "default";
+				pinctrl-0 = <&mx9_wifi_enable_h>;
+				reset-gpios = <&gpio3 8 1>;
+				post-power-on-delay-ms = <200>;
+			};
+		};
+	};
+};

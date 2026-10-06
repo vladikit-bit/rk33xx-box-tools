@@ -1,0 +1,755 @@
+[    0.000000] Booting Linux on physical CPU 0x0000000000 [0x410fd034]
+[    0.000000] Linux version 6.18.44-current-rockchip64 (build@armbian) (aarch64-linux-gnu-gcc (Debian 14.2.0-19) 14.2.0, GNU ld (GNU Binutils for Debian) 2.44) #1 SMP PREEMPT Sun Aug  9 18:25:30 UTC 2026
+[    0.000000] KASLR disabled due to lack of seed
+[    0.000000] Machine model: Rockchip RK3318 BOX
+[    0.000000] efi: UEFI not found.
+[    0.000000] OF: reserved mem: Reserved memory: No reserved-memory node in the DT
+[    0.000000] NUMA: Faking a node at [mem 0x0000000000200000-0x000000007fffffff]
+[    0.000000] NODE_DATA(0) allocated [mem 0x7fbb3f00-0x7fbb66bf]
+[    0.000000] Zone ranges:
+[    0.000000]   DMA      [mem 0x0000000000200000-0x000000007fffffff]
+[    0.000000]   DMA32    empty
+[    0.000000]   Normal   empty
+[    0.000000] Movable zone start for each node
+[    0.000000] Early memory node ranges
+[    0.000000]   node   0: [mem 0x0000000000200000-0x000000007fffffff]
+[    0.000000] Initmem setup node 0 [mem 0x0000000000200000-0x000000007fffffff]
+[    0.000000] On node 0, zone DMA: 512 pages in unavailable ranges
+[    0.000000] cma: Reserved 128 MiB at 0x0000000072200000
+[    0.000000] psci: probing for conduit method from DT.
+[    0.000000] psci: PSCIv1.0 detected in firmware.
+[    0.000000] psci: Using standard PSCI v0.2 function IDs
+[    0.000000] psci: MIGRATE_INFO_TYPE not supported.
+[    0.000000] psci: SMC Calling Convention v1.0
+[    0.000000] percpu: Embedded 34 pages/cpu s100824 r8192 d30248 u139264
+[    0.000000] pcpu-alloc: s100824 r8192 d30248 u139264 alloc=34*4096
+[    0.000000] pcpu-alloc: [0] 0 [0] 1 [0] 2 [0] 3 
+[    0.000000] Detected VIPT I-cache on CPU0
+[    0.000000] CPU features: detected: ARM erratum 845719
+[    0.000000] alternatives: applying boot alternatives
+[    0.000000] Kernel command line: root=UUID=b82a1580-8fe4-456f-abe4-a32ca973b55e rootwait rootfstype=ext4 splash=verbose console=ttyS2,1500000 console=tty1 consoleblank=0 loglevel=1 ubootpart=77c81bb8-01 usb-storage.quirks=0x2537:0x1066:u,0x2537:0x1068:u apparmor=1 security=apparmor systemd.unified_cgroup_hierarchy=0  cgroup_enable=cpuset cgroup_memory=1 cgroup_enable=memory swapaccount=1
+[    0.000000] Unknown kernel command line parameters "splash=verbose ubootpart=77c81bb8-01 cgroup_enable=memory cgroup_memory=1", will be passed to user space.
+[    0.000000] printk: log buffer data + meta data: 262144 + 917504 = 1179648 bytes
+[    0.000000] Dentry cache hash table entries: 262144 (order: 9, 2097152 bytes, linear)
+[    0.000000] Inode-cache hash table entries: 131072 (order: 8, 1048576 bytes, linear)
+[    0.000000] software IO TLB: SWIOTLB bounce buffer size adjusted to 1MB
+[    0.000000] software IO TLB: area num 4.
+[    0.000000] software IO TLB: mapped [mem 0x000000007f615000-0x000000007f815000] (2MB)
+[    0.000000] Fallback order for Node 0: 0 
+[    0.000000] Built 1 zonelists, mobility grouping on.  Total pages: 523776
+[    0.000000] Policy zone: DMA
+[    0.000000] mem auto-init: stack:all(zero), heap alloc:on, heap free:off
+[    0.000000] SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=4, Nodes=1
+[    0.000000] ftrace: allocating 55960 entries in 220 pages
+[    0.000000] ftrace: allocated 220 pages with 5 groups
+[    0.000000] rcu: Preemptible hierarchical RCU implementation.
+[    0.000000] rcu: 	RCU event tracing is enabled.
+[    0.000000] rcu: 	RCU restricting CPUs from NR_CPUS=256 to nr_cpu_ids=4.
+[    0.000000] 	Trampoline variant of Tasks RCU enabled.
+[    0.000000] 	Rude variant of Tasks RCU enabled.
+[    0.000000] 	Tracing variant of Tasks RCU enabled.
+[    0.000000] rcu: RCU calculated value of scheduler-enlistment delay is 25 jiffies.
+[    0.000000] rcu: Adjusting geometry for rcu_fanout_leaf=16, nr_cpu_ids=4
+[    0.000000] RCU Tasks: Setting shift to 2 and lim to 1 rcu_task_cb_adjust=1 rcu_task_cpu_ids=4.
+[    0.000000] RCU Tasks Rude: Setting shift to 2 and lim to 1 rcu_task_cb_adjust=1 rcu_task_cpu_ids=4.
+[    0.000000] RCU Tasks Trace: Setting shift to 2 and lim to 1 rcu_task_cb_adjust=1 rcu_task_cpu_ids=4.
+[    0.000000] NR_IRQS: 64, nr_irqs: 64, preallocated irqs: 0
+[    0.000000] Root IRQ handler: gic_handle_irq
+[    0.000000] GIC: Using split EOI/Deactivate mode
+[    0.000000] rcu: srcu_init: Setting srcu_struct sizes based on contention.
+[    0.000000] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 7645041785100000 ns
+[    0.000000] arch_timer: cp15 timer running at 24.00MHz (phys).
+[    0.000000] clocksource: arch_sys_counter: mask: 0xffffffffffffff max_cycles: 0x588fe9dc0, max_idle_ns: 440795202592 ns
+[    0.000001] sched_clock: 56 bits at 24MHz, resolution 41ns, wraps every 4398046511097ns
+[    0.001064] Console: colour dummy device 80x25
+[    0.001094] printk: legacy console [tty1] enabled
+[    0.001370] Calibrating delay loop (skipped), value calculated using timer frequency.. 48.00 BogoMIPS (lpj=96000)
+[    0.001400] pid_max: default: 32768 minimum: 301
+[    0.001609] LSM: initializing lsm=capability,yama,apparmor
+[    0.001719] Yama: becoming mindful.
+[    0.002153] AppArmor: AppArmor initialized
+[    0.002363] Mount-cache hash table entries: 4096 (order: 3, 32768 bytes, linear)
+[    0.002400] Mountpoint-cache hash table entries: 4096 (order: 3, 32768 bytes, linear)
+[    0.007627] rcu: Hierarchical SRCU implementation.
+[    0.007660] rcu: 	Max phase no-delay instances is 1000.
+[    0.008278] Timer migration: 1 hierarchy levels; 8 children per group; 1 crossnode level
+[    0.010124] EFI services will not be available.
+[    0.010871] smp: Bringing up secondary CPUs ...
+[    0.012117] Detected VIPT I-cache on CPU1
+[    0.012432] CPU1: Booted secondary processor 0x0000000001 [0x410fd034]
+[    0.014030] Detected VIPT I-cache on CPU2
+[    0.014328] CPU2: Booted secondary processor 0x0000000002 [0x410fd034]
+[    0.015855] Detected VIPT I-cache on CPU3
+[    0.016165] CPU3: Booted secondary processor 0x0000000003 [0x410fd034]
+[    0.016413] smp: Brought up 1 node, 4 CPUs
+[    0.016450] SMP: Total of 4 processors activated.
+[    0.016461] CPU: All CPU(s) started at EL2
+[    0.016524] CPU features: detected: 32-bit EL0 Support
+[    0.016537] CPU features: detected: 32-bit EL1 Support
+[    0.016553] CPU features: detected: CRC32 instructions
+[    0.016580] CPU features: detected: PMUv3
+[    0.016682] alternatives: applying system-wide alternatives
+[    0.019191] Memory: 1851124K/2095104K available (17856K kernel code, 2818K rwdata, 11448K rodata, 2816K init, 696K bss, 107312K reserved, 131072K cma-reserved)
+[    0.021125] devtmpfs: initialized
+[    0.046446] posixtimers hash table entries: 2048 (order: 3, 32768 bytes, linear)
+[    0.046627] futex hash table entries: 1024 (65536 bytes on 1 NUMA nodes, total 64 KiB, linear).
+[    0.050984] 23808 pages in range for non-PLT usage
+[    0.051023] 515328 pages in range for PLT usage
+[    0.051479] pinctrl core: initialized pinctrl subsystem
+[    0.053019] DMI not present or invalid.
+[    0.058657] NET: Registered PF_NETLINK/PF_ROUTE protocol family
+[    0.062638] DMA: preallocated 2048 KiB GFP_KERNEL pool for atomic allocations
+[    0.065734] DMA: preallocated 2048 KiB GFP_KERNEL|GFP_DMA pool for atomic allocations
+[    0.069534] DMA: preallocated 2048 KiB GFP_KERNEL|GFP_DMA32 pool for atomic allocations
+[    0.069683] audit: initializing netlink subsys (disabled)
+[    0.070251] audit: type=2000 audit(0.068:1): state=initialized audit_enabled=0 res=1
+[    0.073732] thermal_sys: Registered thermal governor 'fair_share'
+[    0.073760] thermal_sys: Registered thermal governor 'bang_bang'
+[    0.073775] thermal_sys: Registered thermal governor 'step_wise'
+[    0.073788] thermal_sys: Registered thermal governor 'user_space'
+[    0.073932] cpuidle: using governor menu
+[    0.074659] hw-breakpoint: found 6 breakpoint and 4 watchpoint registers.
+[    0.074881] ASID allocator initialised with 65536 entries
+[    0.075391] Serial: AMBA PL011 UART driver
+[    0.093084] /vop@ff370000: Fixed dependency cycle(s) with /hdmi@ff3c0000
+[    0.093257] /hdmi@ff3c0000: Fixed dependency cycle(s) with /vop@ff370000
+[    0.105045] /pinctrl: Fixed dependency cycle(s) with /pinctrl/clk_32k/clk-32k-out
+[    0.112286] gpio gpiochip0: Static allocation of GPIO base is deprecated, use dynamic allocation.
+[    0.113638] rockchip-gpio ff210000.gpio: probed /pinctrl/gpio@ff210000
+[    0.114663] gpio gpiochip1: Static allocation of GPIO base is deprecated, use dynamic allocation.
+[    0.115435] rockchip-gpio ff220000.gpio: probed /pinctrl/gpio@ff220000
+[    0.116190] gpio gpiochip2: Static allocation of GPIO base is deprecated, use dynamic allocation.
+[    0.116949] rockchip-gpio ff230000.gpio: probed /pinctrl/gpio@ff230000
+[    0.117823] gpio gpiochip3: Static allocation of GPIO base is deprecated, use dynamic allocation.
+[    0.118656] rockchip-gpio ff240000.gpio: probed /pinctrl/gpio@ff240000
+[    0.133875] HugeTLB: registered 1.00 GiB page size, pre-allocated 0 pages
+[    0.133910] HugeTLB: 0 KiB vmemmap can be freed for a 1.00 GiB page
+[    0.133926] HugeTLB: registered 32.0 MiB page size, pre-allocated 0 pages
+[    0.133938] HugeTLB: 0 KiB vmemmap can be freed for a 32.0 MiB page
+[    0.133953] HugeTLB: registered 2.00 MiB page size, pre-allocated 0 pages
+[    0.133966] HugeTLB: 0 KiB vmemmap can be freed for a 2.00 MiB page
+[    0.133979] HugeTLB: registered 64.0 KiB page size, pre-allocated 0 pages
+[    0.133991] HugeTLB: 0 KiB vmemmap can be freed for a 64.0 KiB page
+[    0.139466] iommu: Default domain type: Translated
+[    0.139501] iommu: DMA domain TLB invalidation policy: strict mode
+[    0.144236] SCSI subsystem initialized
+[    0.144806] libata version 3.00 loaded.
+[    0.145360] usbcore: registered new interface driver usbfs
+[    0.145449] usbcore: registered new interface driver hub
+[    0.145535] usbcore: registered new device driver usb
+[    0.146481] pps_core: LinuxPPS API ver. 1 registered
+[    0.146500] pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+[    0.146531] PTP clock support registered
+[    0.146605] EDAC MC: Ver: 3.0.0
+[    0.147508] scmi_core: SCMI protocol bus registered
+[    0.150042] NetLabel: Initializing
+[    0.150075] NetLabel:  domain hash size = 128
+[    0.150088] NetLabel:  protocols = UNLABELED CIPSOv4 CALIPSO
+[    0.150265] NetLabel:  unlabeled traffic allowed by default
+[    0.150704] vgaarb: loaded
+[    0.151966] clocksource: Switched to clocksource arch_sys_counter
+[    0.322123] VFS: Disk quotas dquot_6.6.0
+[    0.322207] VFS: Dquot-cache hash table entries: 512 (order 0, 4096 bytes)
+[    0.323926] AppArmor: AppArmor Filesystem Enabled
+[    0.340300] NET: Registered PF_INET protocol family
+[    0.340724] IP idents hash table entries: 32768 (order: 6, 262144 bytes, linear)
+[    0.464292] tcp_listen_portaddr_hash hash table entries: 1024 (order: 2, 16384 bytes, linear)
+[    0.464487] Table-perturb hash table entries: 65536 (order: 6, 262144 bytes, linear)
+[    0.464707] TCP established hash table entries: 16384 (order: 5, 131072 bytes, linear)
+[    0.465155] TCP bind hash table entries: 16384 (order: 7, 524288 bytes, linear)
+[    0.465916] TCP: Hash tables configured (established 16384 bind 16384)
+[    0.466222] UDP hash table entries: 1024 (order: 4, 65536 bytes, linear)
+[    0.466411] UDP-Lite hash table entries: 1024 (order: 4, 65536 bytes, linear)
+[    0.466951] NET: Registered PF_UNIX/PF_LOCAL protocol family
+[    0.467021] NET: Registered PF_XDP protocol family
+[    0.467070] PCI: CLS 0 bytes, default 64
+[    0.467571] Trying to unpack rootfs image as initramfs...
+[    0.480899] kvm [1]: nv: 568 coarse grained trap handlers
+[    0.481980] kvm [1]: IPA Size Limit: 40 bits
+[    0.487150] kvm [1]: vgic interrupt IRQ9
+[    0.487241] kvm [1]: Hyp nVHE mode initialized successfully
+[    0.490736] Initialise system trusted keyrings
+[    0.490913] Key type blacklist registered
+[    0.491529] workingset: timestamp_bits=44 max_order=19 bucket_order=0
+[    0.492811] squashfs: version 4.0 (2009/01/31) Phillip Lougher
+[    0.493790] fuse: init (API version 7.45)
+[    0.494872] integrity: Platform Keyring initialized
+[    0.495490] cryptd: max_cpu_qlen set to 1000
+[    0.611371] Key type asymmetric registered
+[    0.611412] Asymmetric key parser 'x509' registered
+[    0.611627] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 245)
+[    0.612310] io scheduler mq-deadline registered
+[    0.612343] io scheduler kyber registered
+[    0.612462] io scheduler bfq registered
+[    0.622011] rockchip-usb3-phy ff460000.usb3-phy: Completed usb3phy utmi-port port init
+[    3.283428] Freeing initrd memory: 28452K
+[    3.287275] ledtrig-cpu: registered to indicate activity on CPUs
+[    3.306373] dma-pl330 ff1f0000.dma-controller: Loaded driver for PL330 DMAC-241330
+[    3.306424] dma-pl330 ff1f0000.dma-controller: 	DBUFF-128x8bytes Num_Chans-8 Num_Peri-20 Num_Events-16
+[    3.312185] Serial: 8250/16550 driver, 8 ports, IRQ sharing disabled
+[    3.320826] ff110000.serial: ttyS0 at MMIO 0xff110000 (irq = 25, base_baud = 1500000) is a 16550A
+[    3.323218] ff120000.serial: ttyS1 at MMIO 0xff120000 (irq = 26, base_baud = 1500000) is a 16550A
+[    3.325835] ff130000.serial: ttyS2 at MMIO 0xff130000 (irq = 27, base_baud = 1500000) is a 16550A
+[    3.326004] printk: legacy console [ttyS2] enabled
+[    3.328726] Serial: AMBA driver
+[    3.334375] platform ff350000.video-codec: Adding to iommu group 0
+[    3.336754] platform ff360000.video-codec: Adding to iommu group 1
+[    3.338923] platform ff370000.vop: Adding to iommu group 2
+[    3.341091] platform ff3a0000.iep: Adding to iommu group 3
+[    3.358938] loop: module loaded
+[    3.361861] Key type psk registered
+[    3.369630] thunder_xcv, ver 1.0
+[    3.369752] thunder_bgx, ver 1.0
+[    3.369842] nicpf, ver 1.0
+[    3.371930] rk_gmac-dwmac ff550000.ethernet: IRQ eth_wake_irq not found
+[    3.372109] rk_gmac-dwmac ff550000.ethernet: IRQ sfty not found
+[    3.372383] rk_gmac-dwmac ff550000.ethernet: PTP uses main clock
+[    3.372846] rk_gmac-dwmac ff550000.ethernet: integrated PHY? (yes).
+[    3.378000] rk_gmac-dwmac ff550000.ethernet: init for rmii with output clock
+[    3.412465] rk_gmac-dwmac ff550000.ethernet: User ID: 0x10, Synopsys ID: 0x35
+[    3.412513] rk_gmac-dwmac ff550000.ethernet: 	DWMAC1000
+[    3.412534] rk_gmac-dwmac ff550000.ethernet: DMA HW capability register supported
+[    3.412552] rk_gmac-dwmac ff550000.ethernet: RX Checksum Offload Engine supported
+[    3.412567] rk_gmac-dwmac ff550000.ethernet: COE Type 2
+[    3.412584] rk_gmac-dwmac ff550000.ethernet: TX Checksum insertion supported
+[    3.412603] rk_gmac-dwmac ff550000.ethernet: Wake-Up On Lan supported
+[    3.412770] rk_gmac-dwmac ff550000.ethernet: Normal descriptors
+[    3.412792] rk_gmac-dwmac ff550000.ethernet: Ring mode enabled
+[    3.412809] rk_gmac-dwmac ff550000.ethernet: Enable RX Mitigation via HW Watchdog Timer
+[    3.412852] rk_gmac-dwmac ff550000.ethernet: device MAC address 9a:65:4f:ba:01:6b
+[    3.439755] rockchip-usb3-phy ff460000.usb3-phy: usb3phy_init phy-ff460000.usb3-phy.2
+[    3.441910] rockchip-usb3-phy ff460000.usb3-phy: usb3phy_init phy-ff460000.usb3-phy.3
+[    3.446930] dwc2 ff580000.usb: supply vusb_d not found, using dummy regulator
+[    3.447188] dwc2 ff580000.usb: supply vusb_a not found, using dummy regulator
+[    3.460431] dwc2 ff580000.usb: DWC OTG Controller
+[    3.460519] dwc2 ff580000.usb: new USB bus registered, assigned bus number 1
+[    3.460583] dwc2 ff580000.usb: irq 36, io mem 0xff580000
+[    3.461041] usb usb1: New USB device found, idVendor=1d6b, idProduct=0002, bcdDevice= 6.18
+[    3.461068] usb usb1: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[    3.461092] usb usb1: Product: DWC OTG Controller
+[    3.461110] usb usb1: Manufacturer: Linux 6.18.44-current-rockchip64 dwc2_hsotg
+[    3.461131] usb usb1: SerialNumber: ff580000.usb
+[    3.462387] hub 1-0:1.0: USB hub found
+[    3.462496] hub 1-0:1.0: 1 port detected
+[    3.466294] xhci-hcd xhci-hcd.0.auto: xHCI Host Controller
+[    3.466360] xhci-hcd xhci-hcd.0.auto: new USB bus registered, assigned bus number 2
+[    3.466622] xhci-hcd xhci-hcd.0.auto: hcc params 0x0220fe64 hci version 0x110 quirks 0x0000808002000010
+[    3.466737] xhci-hcd xhci-hcd.0.auto: irq 35, io mem 0xff600000
+[    3.467141] xhci-hcd xhci-hcd.0.auto: xHCI Host Controller
+[    3.467175] xhci-hcd xhci-hcd.0.auto: new USB bus registered, assigned bus number 3
+[    3.467207] xhci-hcd xhci-hcd.0.auto: Host supports USB 3.0 SuperSpeed
+[    3.467632] usb usb2: New USB device found, idVendor=1d6b, idProduct=0002, bcdDevice= 6.18
+[    3.467662] usb usb2: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[    3.467684] usb usb2: Product: xHCI Host Controller
+[    3.467702] usb usb2: Manufacturer: Linux 6.18.44-current-rockchip64 xhci-hcd
+[    3.467723] usb usb2: SerialNumber: xhci-hcd.0.auto
+[    3.468023] ehci-platform ff5c0000.usb: EHCI Host Controller
+[    3.468049] ohci-platform ff5d0000.usb: Generic Platform OHCI controller
+[    3.469145] hub 2-0:1.0: USB hub found
+[    3.469240] hub 2-0:1.0: 1 port detected
+[    3.470052] usb usb3: We don't know the algorithms for LPM for this host, disabling LPM.
+[    3.470326] usb usb3: New USB device found, idVendor=1d6b, idProduct=0003, bcdDevice= 6.18
+[    3.470354] usb usb3: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[    3.470375] usb usb3: Product: xHCI Host Controller
+[    3.470393] usb usb3: Manufacturer: Linux 6.18.44-current-rockchip64 xhci-hcd
+[    3.470414] usb usb3: SerialNumber: xhci-hcd.0.auto
+[    3.471496] hub 3-0:1.0: USB hub found
+[    3.471583] hub 3-0:1.0: 1 port detected
+[    3.472412] ehci-platform ff5c0000.usb: new USB bus registered, assigned bus number 4
+[    3.472429] ohci-platform ff5d0000.usb: new USB bus registered, assigned bus number 5
+[    3.472661] usbcore: registered new interface driver usb-storage
+[    3.472688] ehci-platform ff5c0000.usb: irq 37, io mem 0xff5c0000
+[    3.472723] ohci-platform ff5d0000.usb: irq 38, io mem 0xff5d0000
+[    3.473225] usbcore: registered new device driver onboard-usb-dev
+[    3.477002] mousedev: PS/2 mouse device common for all mice
+[    3.477960] i2c_dev: i2c /dev entries driver
+[    3.483569] dw_wdt ff1a0000.watchdog: No valid TOPs array specified
+[    3.484024] ehci-platform ff5c0000.usb: USB 2.0 started, EHCI 1.00
+[    3.484581] usb usb4: New USB device found, idVendor=1d6b, idProduct=0002, bcdDevice= 6.18
+[    3.484617] usb usb4: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[    3.484636] usb usb4: Product: EHCI Host Controller
+[    3.484653] usb usb4: Manufacturer: Linux 6.18.44-current-rockchip64 ehci_hcd
+[    3.484669] usb usb4: SerialNumber: ff5c0000.usb
+[    3.485847] hub 4-0:1.0: USB hub found
+[    3.485956] hub 4-0:1.0: 1 port detected
+[    3.489085] rockchip-pinctrl pinctrl: unable to find group for node mx9-wifi-enable-h
+[    3.489910] sdhci: Secure Digital Host Controller Interface driver
+[    3.489931] sdhci: Copyright(c) Pierre Ossman
+[    3.489982] Synopsys Designware Multimedia Card Interface Driver
+[    3.490677] sdhci-pltfm: SDHCI platform and OF driver helper
+[    3.491771] dwmmc_rockchip ff5f0000.sdio: IDMAC supports 32-bit address mode.
+[    3.491773] dwmmc_rockchip ff500000.mmc: IDMAC supports 32-bit address mode.
+[    3.491777] dwmmc_rockchip ff520000.mmc: IDMAC supports 32-bit address mode.
+[    3.491847] dwmmc_rockchip ff5f0000.sdio: Using internal DMA controller.
+[    3.491847] dwmmc_rockchip ff500000.mmc: Using internal DMA controller.
+[    3.491847] dwmmc_rockchip ff520000.mmc: Using internal DMA controller.
+[    3.491861] dwmmc_rockchip ff500000.mmc: Version ID is 270a
+[    3.491862] dwmmc_rockchip ff520000.mmc: Version ID is 270a
+[    3.491868] dwmmc_rockchip ff5f0000.sdio: Version ID is 270a
+[    3.492015] dwmmc_rockchip ff520000.mmc: DW MMC controller at irq 41,32 bit host data width,256 deep fifo
+[    3.492050] dwmmc_rockchip ff500000.mmc: DW MMC controller at irq 42,32 bit host data width,256 deep fifo
+[    3.492071] dwmmc_rockchip ff5f0000.sdio: DW MMC controller at irq 43,32 bit host data width,256 deep fifo
+[    3.492556] dwmmc_rockchip ff500000.mmc: Got CD GPIO
+[    3.492985] mmc_host mmc2: card is non-removable.
+[    3.494007] hid: raw HID events driver (C) Jiri Kosina
+[    3.494224] usbcore: registered new interface driver usbhid
+[    3.494235] usbhid: USB HID core driver
+[    3.495160] devfreq-event event0: unsupported memory type 0x3
+[    3.495435] rockchip-dfi ff790000.dfi: dfi initialized, dram type: 0x3, channels: 1
+[    3.499369] hw perfevents: enabled with armv8_cortex_a53 PMU driver, 7 (0,8000003f) counters available
+[    3.501532] NET: Registered PF_INET6 protocol family
+[    3.504072] Segment Routing with IPv6
+[    3.504133] mmc_host mmc0: Bus speed (slot 0) = 400000Hz (slot req 400000Hz, actual 400000HZ div = 0)
+[    3.504135] mmc_host mmc2: Bus speed (slot 0) = 400000Hz (slot req 400000Hz, actual 400000HZ div = 0)
+[    3.504164] In-situ OAM (IOAM) with IPv6
+[    3.504286] NET: Registered PF_PACKET protocol family
+[    3.504421] bridge: filtering via arp/ip/ip6tables is no longer available by default. Update your scripts to load br_netfilter if you need this.
+[    3.505101] Key type dns_resolver registered
+[    3.518899] registered taskstats version 1
+[    3.519697] Loading compiled-in X.509 certificates
+[    3.532518] usb usb5: New USB device found, idVendor=1d6b, idProduct=0001, bcdDevice= 6.18
+[    3.532556] usb usb5: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[    3.532568] usb usb5: Product: Generic Platform OHCI controller
+[    3.532578] usb usb5: Manufacturer: Linux 6.18.44-current-rockchip64 ohci_hcd
+[    3.532588] usb usb5: SerialNumber: ff5d0000.usb
+[    3.533876] hub 5-0:1.0: USB hub found
+[    3.533951] hub 5-0:1.0: 1 port detected
+[    3.537964] zswap: loaded using pool zstd
+[    3.538490] Demotion targets for Node 0: null
+[    3.538762] Key type .fscrypt registered
+[    3.538773] Key type fscrypt-provisioning registered
+[    3.539153] Key type encrypted registered
+[    3.539164] AppArmor: AppArmor sha256 policy hashing enabled
+[    3.557570] mmc_host mmc0: Bus speed (slot 0) = 50000000Hz (slot req 50000000Hz, actual 50000000HZ div = 0)
+[    3.557745] mmc0: new high speed SDHC card at address 0001
+[    3.560208] mmcblk0: mmc0:0001 BB1QT 29.8 GiB
+[    3.564056] dwmmc_rockchip ff5f0000.sdio: IDMAC supports 32-bit address mode.
+[    3.564163] dwmmc_rockchip ff5f0000.sdio: Using internal DMA controller.
+[    3.564182] dwmmc_rockchip ff5f0000.sdio: Version ID is 270a
+[    3.564251] dwmmc_rockchip ff5f0000.sdio: DW MMC controller at irq 43,32 bit host data width,256 deep fifo
+[    3.564988]  mmcblk0: p1
+[    3.568197] dwmmc_rockchip ff5f0000.sdio: IDMAC supports 32-bit address mode.
+[    3.568291] dwmmc_rockchip ff5f0000.sdio: Using internal DMA controller.
+[    3.568307] dwmmc_rockchip ff5f0000.sdio: Version ID is 270a
+[    3.568369] dwmmc_rockchip ff5f0000.sdio: DW MMC controller at irq 43,32 bit host data width,256 deep fifo
+[    3.581482] of_cfs_init
+[    3.581598] of_cfs_init: OK
+[    3.648342] clk: Disabling unused clocks
+[    3.648648] PM: genpd: Disabling unused power domains
+[    3.655396] Freeing unused kernel memory: 2816K
+[    3.655704] Run /init as init process
+[    3.655718]   with arguments:
+[    3.655728]     /init
+[    3.655735]   with environment:
+[    3.655747]     HOME=/
+[    3.655754]     TERM=linux
+[    3.655763]     splash=verbose
+[    3.655773]     ubootpart=77c81bb8-01
+[    3.655782]     cgroup_enable=memory
+[    3.655794]     cgroup_memory=1
+[    4.051481] mmc_host mmc2: Bus speed (slot 0) = 50000000Hz (slot req 52000000Hz, actual 50000000HZ div = 0)
+[    4.054547] mmc2: new high speed MMC card at address 0001
+[    4.057572] mmcblk2: mmc2:0001 SDW16G 14.7 GiB
+[    4.079854]  mmcblk2: p1 p2
+[    4.083230] mmcblk2boot0: mmc2:0001 SDW16G 4.00 MiB
+[    4.097868] mmcblk2boot1: mmc2:0001 SDW16G 4.00 MiB
+[    4.106947] mmcblk2rpmb: mmc2:0001 SDW16G 4.00 MiB, chardev (242:0)
+[    4.110573] dwmmc_rockchip ff5f0000.sdio: IDMAC supports 32-bit address mode.
+[    4.110668] dwmmc_rockchip ff5f0000.sdio: Using internal DMA controller.
+[    4.110685] dwmmc_rockchip ff5f0000.sdio: Version ID is 270a
+[    4.110759] dwmmc_rockchip ff5f0000.sdio: DW MMC controller at irq 43,32 bit host data width,256 deep fifo
+[    4.292201] input: adc-keys as /devices/platform/adc-keys/input/input0
+[    4.295809] dwmmc_rockchip ff5f0000.sdio: IDMAC supports 32-bit address mode.
+[    4.295913] dwmmc_rockchip ff5f0000.sdio: Using internal DMA controller.
+[    4.296038] dwmmc_rockchip ff5f0000.sdio: Version ID is 270a
+[    4.296124] dwmmc_rockchip ff5f0000.sdio: DW MMC controller at irq 43,32 bit host data width,256 deep fifo
+[    4.387450] dwmmc_rockchip ff5f0000.sdio: IDMAC supports 32-bit address mode.
+[    4.387548] dwmmc_rockchip ff5f0000.sdio: Using internal DMA controller.
+[    4.387565] dwmmc_rockchip ff5f0000.sdio: Version ID is 270a
+[    4.387633] dwmmc_rockchip ff5f0000.sdio: DW MMC controller at irq 43,32 bit host data width,256 deep fifo
+[    4.431744] lima ff300000.gpu: gp - mali450 version major 0 minor 0
+[    4.432233] lima ff300000.gpu: pp0 - mali450 version major 0 minor 0
+[    4.432530] lima ff300000.gpu: pp1 - mali450 version major 0 minor 0
+[    4.432647] lima ff300000.gpu: l2_cache0 8K, 4-way, 64byte cache line, 128bit external bus
+[    4.432668] lima ff300000.gpu: l2_cache1 64K, 4-way, 64byte cache line, 128bit external bus
+[    4.445624] lima ff300000.gpu: bus rate = 491520000
+[    4.445664] lima ff300000.gpu: mod rate = 491520000
+[    4.456405] [drm] Initialized lima 1.1.0 for ff300000.gpu on minor 0
+[    4.458863] dwmmc_rockchip ff5f0000.sdio: IDMAC supports 32-bit address mode.
+[    4.458948] dwmmc_rockchip ff5f0000.sdio: Using internal DMA controller.
+[    4.458964] dwmmc_rockchip ff5f0000.sdio: Version ID is 270a
+[    4.459044] dwmmc_rockchip ff5f0000.sdio: DW MMC controller at irq 43,32 bit host data width,256 deep fifo
+[    4.489482] dwmmc_rockchip ff5f0000.sdio: IDMAC supports 32-bit address mode.
+[    4.489564] dwmmc_rockchip ff5f0000.sdio: Using internal DMA controller.
+[    4.489580] dwmmc_rockchip ff5f0000.sdio: Version ID is 270a
+[    4.489640] dwmmc_rockchip ff5f0000.sdio: DW MMC controller at irq 43,32 bit host data width,256 deep fifo
+[    4.506513] dwmmc_rockchip ff5f0000.sdio: IDMAC supports 32-bit address mode.
+[    4.506595] dwmmc_rockchip ff5f0000.sdio: Using internal DMA controller.
+[    4.506611] dwmmc_rockchip ff5f0000.sdio: Version ID is 270a
+[    4.506673] dwmmc_rockchip ff5f0000.sdio: DW MMC controller at irq 43,32 bit host data width,256 deep fifo
+[    4.833734] dw-apb-uart ff130000.serial: forbid DMA for kernel console
+[    4.932007] raid6: neonx8   gen()  1860 MB/s
+[    5.000030] raid6: neonx4   gen()  1847 MB/s
+[    5.068035] raid6: neonx2   gen()  1757 MB/s
+[    5.136008] raid6: neonx1   gen()  1487 MB/s
+[    5.204055] raid6: int64x8  gen()  1142 MB/s
+[    5.271981] raid6: int64x4  gen()  1301 MB/s
+[    5.340081] raid6: int64x2  gen()  1170 MB/s
+[    5.408085] raid6: int64x1  gen()   852 MB/s
+[    5.408111] raid6: using algorithm neonx8 gen() 1860 MB/s
+[    5.476057] raid6: .... xor() 1379 MB/s, rmw enabled
+[    5.476083] raid6: using neon recovery algorithm
+[    5.479431] xor: measuring software checksum speed
+[    5.481071]    8regs           :  2095 MB/sec
+[    5.482601]    32regs          :  2189 MB/sec
+[    5.484308]    arm64_neon      :  1938 MB/sec
+[    5.484321] xor: using function: 32regs (2189 MB/sec)
+[    5.605926] Btrfs loaded, zoned=yes, fsverity=yes
+[   10.718988] EXT4-fs (mmcblk0p1): mounted filesystem b82a1580-8fe4-456f-abe4-a32ca973b55e ro with writeback data mode. Quota mode: none.
+[   11.884538] systemd[1]: System time before build time, advancing clock.
+[   11.901647] systemd[1]: Inserted module 'autofs4'
+[   12.016225] systemd[1]: systemd 252.39-1~deb12u2 running in system mode (+PAM +AUDIT +SELINUX +APPARMOR +IMA +SMACK +SECCOMP +GCRYPT -GNUTLS +OPENSSL +ACL +BLKID +CURL +ELFUTILS +FIDO2 +IDN2 -IDN +IPTC +KMOD +LIBCRYPTSETUP +LIBFDISK +PCRE2 -PWQUALITY +P11KIT +QRENCODE +TPM2 +BZIP2 +LZ4 +XZ +ZLIB +ZSTD -BPF_FRAMEWORK -XKBCOMMON +UTMP +SYSVINIT default-hierarchy=unified)
+[   12.016311] systemd[1]: Detected architecture arm64.
+[   12.018373] /proc/cgroups lists only v1 controllers, use cgroup.controllers of root cgroup for v2 info
+[   12.031720] systemd[1]: Hostname set to <homeassistant>.
+[   13.495864] systemd[1]: Queued start job for default target graphical.target.
+[   13.542098] systemd[1]: Created slice system-getty.slice - Slice /system/getty.
+[   13.546334] systemd[1]: Created slice system-modprobe.slice - Slice /system/modprobe.
+[   13.550437] systemd[1]: Created slice system-serial\x2dgetty.slice - Slice /system/serial-getty.
+[   13.553628] systemd[1]: Created slice user.slice - User and Session Slice.
+[   13.554493] systemd[1]: Started systemd-ask-password-wall.path - Forward Password Requests to Wall Directory Watch.
+[   13.556085] systemd[1]: Set up automount proc-sys-fs-binfmt_misc.automount - Arbitrary Executable File Formats File System Automount Point.
+[   13.556533] systemd[1]: Expecting device dev-ttyS2.device - /dev/ttyS2...
+[   13.557050] systemd[1]: Reached target integritysetup.target - Local Integrity Protected Volumes.
+[   13.557730] systemd[1]: Reached target slices.target - Slice Units.
+[   13.558176] systemd[1]: Reached target swap.target - Swaps.
+[   13.558736] systemd[1]: Reached target time-set.target - System Time Set.
+[   13.559376] systemd[1]: Reached target veritysetup.target - Local Verity Protected Volumes.
+[   13.594020] systemd[1]: Listening on rpcbind.socket - RPCbind Server Activation Socket.
+[   13.595711] systemd[1]: Listening on syslog.socket - Syslog Socket.
+[   13.597477] systemd[1]: Listening on systemd-fsckd.socket - fsck to fsckd communication Socket.
+[   13.598548] systemd[1]: Listening on systemd-initctl.socket - initctl Compatibility Named Pipe.
+[   13.601201] systemd[1]: Listening on systemd-journald-audit.socket - Journal Audit Socket.
+[   13.602648] systemd[1]: Listening on systemd-journald-dev-log.socket - Journal Socket (/dev/log).
+[   13.604599] systemd[1]: Listening on systemd-journald.socket - Journal Socket.
+[   13.606357] systemd[1]: Listening on systemd-udevd-control.socket - udev Control Socket.
+[   13.607579] systemd[1]: Listening on systemd-udevd-kernel.socket - udev Kernel Socket.
+[   13.615698] systemd[1]: Mounting dev-hugepages.mount - Huge Pages File System...
+[   13.624696] systemd[1]: Mounting dev-mqueue.mount - POSIX Message Queue File System...
+[   13.635291] systemd[1]: Mounting sys-kernel-debug.mount - Kernel Debug File System...
+[   13.645341] systemd[1]: Mounting sys-kernel-tracing.mount - Kernel Trace File System...
+[   13.646617] systemd[1]: auth-rpcgss-module.service - Kernel Module supporting RPCSEC_GSS was skipped because of an unmet condition check (ConditionPathExists=/etc/krb5.keytab).
+[   13.658878] systemd[1]: Starting fake-hwclock.service - Restore / save the current clock...
+[   13.669538] systemd[1]: Starting keyboard-setup.service - Set the console keyboard layout...
+[   13.680167] systemd[1]: Starting kmod-static-nodes.service - Create List of Static Device Nodes...
+[   13.691712] systemd[1]: Starting modprobe@configfs.service - Load Kernel Module configfs...
+[   13.702891] systemd[1]: Starting modprobe@dm_mod.service - Load Kernel Module dm_mod...
+[   13.715491] systemd[1]: Starting modprobe@drm.service - Load Kernel Module drm...
+[   13.732663] systemd[1]: Starting modprobe@efi_pstore.service - Load Kernel Module efi_pstore...
+[   13.743683] systemd[1]: Starting modprobe@fuse.service - Load Kernel Module fuse...
+[   13.755381] systemd[1]: Starting modprobe@loop.service - Load Kernel Module loop...
+[   13.757746] systemd[1]: systemd-fsck-root.service - File System Check on Root Device was skipped because of an unmet condition check (ConditionPathExists=!/run/initramfs/fsck-root).
+[   13.783277] device-mapper: uevent: version 1.0.3
+[   13.784562] device-mapper: ioctl: 4.50.0-ioctl (2025-04-28) initialised: dm-devel@lists.linux.dev
+[   13.786201] systemd[1]: Starting systemd-modules-load.service - Load Kernel Modules...
+[   13.796790] systemd[1]: Starting systemd-remount-fs.service - Remount Root and Kernel File Systems...
+[   13.808602] systemd[1]: Starting systemd-udev-trigger.service - Coldplug All udev Devices...
+[   13.827903] systemd[1]: Mounted dev-hugepages.mount - Huge Pages File System.
+[   13.830955] systemd[1]: Mounted dev-mqueue.mount - POSIX Message Queue File System.
+[   13.835833] systemd[1]: Mounted sys-kernel-debug.mount - Kernel Debug File System.
+[   13.839025] systemd[1]: Mounted sys-kernel-tracing.mount - Kernel Trace File System.
+[   13.845154] systemd[1]: Finished fake-hwclock.service - Restore / save the current clock.
+[   13.851045] systemd[1]: Finished kmod-static-nodes.service - Create List of Static Device Nodes.
+[   13.854360] systemd[1]: modprobe@configfs.service: Deactivated successfully.
+[   13.856192] systemd[1]: Finished modprobe@configfs.service - Load Kernel Module configfs.
+[   13.859404] systemd[1]: modprobe@dm_mod.service: Deactivated successfully.
+[   13.861709] systemd[1]: Finished modprobe@dm_mod.service - Load Kernel Module dm_mod.
+[   13.866007] systemd[1]: modprobe@drm.service: Deactivated successfully.
+[   13.867771] systemd[1]: Finished modprobe@drm.service - Load Kernel Module drm.
+[   13.870459] systemd[1]: modprobe@efi_pstore.service: Deactivated successfully.
+[   13.872276] systemd[1]: Finished modprobe@efi_pstore.service - Load Kernel Module efi_pstore.
+[   13.875000] systemd[1]: modprobe@fuse.service: Deactivated successfully.
+[   13.876607] systemd[1]: Finished modprobe@fuse.service - Load Kernel Module fuse.
+[   13.879609] systemd[1]: modprobe@loop.service: Deactivated successfully.
+[   13.881935] systemd[1]: Finished modprobe@loop.service - Load Kernel Module loop.
+[   13.885962] systemd[1]: Finished systemd-modules-load.service - Load Kernel Modules.
+[   13.897706] systemd[1]: Mounting sys-fs-fuse-connections.mount - FUSE Control File System...
+[   13.904172] EXT4-fs (mmcblk0p1): re-mounted b82a1580-8fe4-456f-abe4-a32ca973b55e r/w.
+[   13.910184] systemd[1]: Mounting sys-kernel-config.mount - Kernel Configuration File System...
+[   13.911371] systemd[1]: systemd-repart.service - Repartition Root Disk was skipped because no trigger condition checks were met.
+[   13.923055] systemd[1]: Starting systemd-sysctl.service - Apply Kernel Variables...
+[   13.946455] systemd[1]: Finished systemd-remount-fs.service - Remount Root and Kernel File Systems.
+[   13.949060] systemd[1]: Mounted sys-fs-fuse-connections.mount - FUSE Control File System.
+[   13.951158] systemd[1]: Mounted sys-kernel-config.mount - Kernel Configuration File System.
+[   13.953445] systemd[1]: systemd-pstore.service - Platform Persistent Storage Archival was skipped because of an unmet condition check (ConditionDirectoryNotEmpty=/sys/fs/pstore).
+[   13.965328] systemd[1]: Starting systemd-random-seed.service - Load/Save Random Seed...
+[   13.977687] systemd[1]: Starting systemd-sysusers.service - Create System Users...
+[   14.036270] systemd[1]: Finished systemd-sysctl.service - Apply Kernel Variables.
+[   14.106956] systemd[1]: Finished systemd-sysusers.service - Create System Users.
+[   14.119353] systemd[1]: Starting systemd-tmpfiles-setup-dev.service - Create Static Device Nodes in /dev...
+[   14.209730] systemd[1]: Finished keyboard-setup.service - Set the console keyboard layout.
+[   14.250567] systemd[1]: Finished systemd-tmpfiles-setup-dev.service - Create Static Device Nodes in /dev.
+[   14.253402] systemd[1]: Reached target local-fs-pre.target - Preparation for Local File Systems.
+[   14.263093] systemd[1]: Mounting tmp.mount - /tmp...
+[   14.274607] systemd[1]: Starting systemd-udevd.service - Rule-based Manager for Device Events and Files...
+[   14.289112] systemd[1]: Mounted tmp.mount - /tmp.
+[   14.291404] systemd[1]: Reached target local-fs.target - Local File Systems.
+[   14.302492] systemd[1]: Starting apparmor.service - Load AppArmor profiles...
+[   14.318074] systemd[1]: Starting armbian-zram-config.service - Armbian ZRAM config...
+[   14.331167] systemd[1]: Starting console-setup.service - Set console font and keymap...
+[   14.349075] systemd[1]: Starting plymouth-read-write.service - Tell Plymouth To Write Out Runtime Data...
+[   14.374151] systemd[1]: Starting systemd-binfmt.service - Set Up Additional Binary Formats...
+[   14.401352] systemd[1]: Received SIGRTMIN+20 from PID 147 (plymouthd).
+[   14.417267] systemd[1]: Finished console-setup.service - Set console font and keymap.
+[   14.421578] systemd[1]: Finished plymouth-read-write.service - Tell Plymouth To Write Out Runtime Data.
+[   14.491455] systemd[1]: proc-sys-fs-binfmt_misc.automount: Got automount request for /proc/sys/fs/binfmt_misc, triggered by 261 (systemd-binfmt)
+[   14.533940] systemd[1]: Finished systemd-udev-trigger.service - Coldplug All udev Devices.
+[   14.557914] systemd[1]: Starting ifupdown-pre.service - Helper to synchronize boot up for ifupdown...
+[   14.562048] platform ff430000.phy: deferred probe pending: platform: wait for supplier /efuse@ff260000/cpu-version@1a
+[   14.562098] platform ff3c0000.hdmi: deferred probe pending: platform: supplier ff430000.phy not ready
+[   14.562126] rockchip-pm-domain ff100000.syscon:power-controller: sync_state() pending due to ff350000.video-codec
+[   14.562140] rockchip-pm-domain ff100000.syscon:power-controller: sync_state() pending due to ff360000.video-codec
+[   14.562152] rockchip-pm-domain ff100000.syscon:power-controller: sync_state() pending due to ff3a0000.iep
+[   14.563589] dwmmc_rockchip ff5f0000.sdio: IDMAC supports 32-bit address mode.
+[   14.563693] dwmmc_rockchip ff5f0000.sdio: Using internal DMA controller.
+[   14.563713] dwmmc_rockchip ff5f0000.sdio: Version ID is 270a
+[   14.563783] dwmmc_rockchip ff5f0000.sdio: DW MMC controller at irq 43,32 bit host data width,256 deep fifo
+[   14.626836] systemd[1]: Finished ifupdown-pre.service - Helper to synchronize boot up for ifupdown.
+[   14.780385] audit: type=1400 audit(1791001022.044:2): apparmor="STATUS" operation="profile_load" profile="unconfined" name="nvidia_modprobe" pid=276 comm="apparmor_parser"
+[   14.780450] audit: type=1400 audit(1791001022.044:3): apparmor="STATUS" operation="profile_load" profile="unconfined" name="nvidia_modprobe//kmod" pid=276 comm="apparmor_parser"
+[   14.783686] audit: type=1400 audit(1791001022.044:4): apparmor="STATUS" operation="profile_load" profile="unconfined" name="lsb_release" pid=275 comm="apparmor_parser"
+[   14.794420] audit: type=1400 audit(1791001022.056:5): apparmor="STATUS" operation="profile_load" profile="unconfined" name="/usr/bin/man" pid=277 comm="apparmor_parser"
+[   14.794476] audit: type=1400 audit(1791001022.056:6): apparmor="STATUS" operation="profile_load" profile="unconfined" name="man_filter" pid=277 comm="apparmor_parser"
+[   14.794494] audit: type=1400 audit(1791001022.056:7): apparmor="STATUS" operation="profile_load" profile="unconfined" name="man_groff" pid=277 comm="apparmor_parser"
+[   14.804392] audit: type=1400 audit(1791001022.064:8): apparmor="STATUS" operation="profile_load" profile="unconfined" name="/usr/sbin/haveged" pid=279 comm="apparmor_parser"
+[   14.817361] audit: type=1400 audit(1791001022.080:9): apparmor="STATUS" operation="profile_load" profile="unconfined" name="/usr/sbin/chronyd" pid=278 comm="apparmor_parser"
+[   14.823080] systemd[1]: Mounting proc-sys-fs-binfmt_misc.mount - Arbitrary Executable File Formats File System...
+[   14.830110] systemd[1]: Finished apparmor.service - Load AppArmor profiles.
+[   14.845045] systemd[1]: Starting networking.service - Raise network interfaces...
+[   14.869665] systemd[1]: Mounted proc-sys-fs-binfmt_misc.mount - Arbitrary Executable File Formats File System.
+[   14.885504] systemd[1]: Finished systemd-binfmt.service - Set Up Additional Binary Formats.
+[   14.892649] systemd[1]: Started systemd-udevd.service - Rule-based Manager for Device Events and Files.
+[   14.912581] systemd[1]: Starting plymouth-start.service - Show Plymouth Boot Screen...
+[   15.038932] systemd[1]: Started plymouth-start.service - Show Plymouth Boot Screen.
+[   15.042381] systemd[1]: systemd-ask-password-console.path - Dispatch Password Requests to Console Directory Watch was skipped because of an unmet condition check (ConditionPathExists=!/run/plymouth/pid).
+[   15.043264] systemd[1]: Started systemd-ask-password-plymouth.path - Forward Password Requests to Plymouth Directory Watch.
+[   15.043867] systemd[1]: Reached target cryptsetup.target - Local Encrypted Volumes.
+[   15.046379] systemd[1]: Reached target paths.target - Path Units.
+[   15.135871] zram: Added device: zram0
+[   15.137392] zram: Added device: zram1
+[   15.139024] zram: Added device: zram2
+[   15.403381] systemd[1]: Found device dev-ttyS2.device - /dev/ttyS2.
+[   15.502648] zram0: detected capacity change from 0 to 2019064
+[   15.971341] systemd[1]: Finished networking.service - Raise network interfaces.
+[   16.247111] rk3288-crypto ff060000.crypto: will run requests pump with realtime priority
+[   16.247307] rk3288-crypto ff060000.crypto: Register ecb(aes) as ecb-aes-rk
+[   16.247397] rk3288-crypto ff060000.crypto: Register cbc(aes) as cbc-aes-rk
+[   16.247422] rk3288-crypto ff060000.crypto: Register ecb(des) as ecb-des-rk
+[   16.247444] rk3288-crypto ff060000.crypto: Register cbc(des) as cbc-des-rk
+[   16.247467] rk3288-crypto ff060000.crypto: Register ecb(des3_ede) as ecb-des3-ede-rk
+[   16.247489] rk3288-crypto ff060000.crypto: Register cbc(des3_ede) as cbc-des3-ede-rk
+[   16.247512] rk3288-crypto ff060000.crypto: Register sha1 as rk-sha1
+[   16.247537] rk3288-crypto ff060000.crypto: Register sha256 as rk-sha256
+[   16.247560] rk3288-crypto ff060000.crypto: Register md5 as rk-md5
+[   16.251322] dwmmc_rockchip ff5f0000.sdio: IDMAC supports 32-bit address mode.
+[   16.251397] dwmmc_rockchip ff5f0000.sdio: Using internal DMA controller.
+[   16.251412] dwmmc_rockchip ff5f0000.sdio: Version ID is 270a
+[   16.251470] dwmmc_rockchip ff5f0000.sdio: DW MMC controller at irq 43,32 bit host data width,256 deep fifo
+[   16.289162] rockchip-drm display-subsystem: bound ff370000.vop (ops rockchip_drm_fini [rockchipdrm])
+[   16.289339] dwhdmi-rockchip ff3c0000.hdmi: supply avdd-0v9 not found, using dummy regulator
+[   16.289662] dwhdmi-rockchip ff3c0000.hdmi: supply avdd-1v8 not found, using dummy regulator
+[   16.290075] dwhdmi-rockchip ff3c0000.hdmi: Detected HDMI TX controller v2.11a with HDCP (inno_dw_hdmi_phy2)
+[   16.291436] dwhdmi-rockchip ff3c0000.hdmi: registered DesignWare HDMI I2C bus driver
+[   16.292495] rockchip-drm display-subsystem: bound ff3c0000.hdmi (ops rockchip_drm_fini [rockchipdrm])
+[   16.294850] [drm] Initialized rockchip 1.0.0 for display-subsystem on minor 1
+[   16.295080] rockchip-drm display-subsystem: [drm] Cannot find any crtc or sizes
+[   16.297763] dwmmc_rockchip ff5f0000.sdio: IDMAC supports 32-bit address mode.
+[   16.297841] dwmmc_rockchip ff5f0000.sdio: Using internal DMA controller.
+[   16.297856] dwmmc_rockchip ff5f0000.sdio: Version ID is 270a
+[   16.297858] rockchip-drm display-subsystem: [drm] Cannot find any crtc or sizes
+[   16.297917] dwmmc_rockchip ff5f0000.sdio: DW MMC controller at irq 43,32 bit host data width,256 deep fifo
+[   16.334244] mc: Linux media interface: v0.10
+[   16.429473] videodev: Linux video capture interface: v2.00
+[   16.462285] dwmmc_rockchip ff5f0000.sdio: IDMAC supports 32-bit address mode.
+[   16.462372] dwmmc_rockchip ff5f0000.sdio: Using internal DMA controller.
+[   16.462388] dwmmc_rockchip ff5f0000.sdio: Version ID is 270a
+[   16.462456] dwmmc_rockchip ff5f0000.sdio: DW MMC controller at irq 43,32 bit host data width,256 deep fifo
+[   16.503744] dwmmc_rockchip ff5f0000.sdio: IDMAC supports 32-bit address mode.
+[   16.503820] dwmmc_rockchip ff5f0000.sdio: Using internal DMA controller.
+[   16.503836] dwmmc_rockchip ff5f0000.sdio: Version ID is 270a
+[   16.503895] dwmmc_rockchip ff5f0000.sdio: DW MMC controller at irq 43,32 bit host data width,256 deep fifo
+[   16.507784] dwmmc_rockchip ff5f0000.sdio: IDMAC supports 32-bit address mode.
+[   16.507892] dwmmc_rockchip ff5f0000.sdio: Using internal DMA controller.
+[   16.507908] dwmmc_rockchip ff5f0000.sdio: Version ID is 270a
+[   16.508040] dwmmc_rockchip ff5f0000.sdio: DW MMC controller at irq 43,32 bit host data width,256 deep fifo
+[   16.509938] rk3328-codec ff410000.codec: spk_depop_time use default value.
+[   16.516099] dwmmc_rockchip ff5f0000.sdio: IDMAC supports 32-bit address mode.
+[   16.516201] dwmmc_rockchip ff5f0000.sdio: Using internal DMA controller.
+[   16.516221] dwmmc_rockchip ff5f0000.sdio: Version ID is 270a
+[   16.516303] dwmmc_rockchip ff5f0000.sdio: DW MMC controller at irq 43,32 bit host data width,256 deep fifo
+[   16.531261] Registered IR keymap rc-empty
+[   16.536254] rc rc0: gpio_ir_recv as /devices/platform/ir-receiver/rc/rc0
+[   16.544483] rc rc0: lirc_dev: driver gpio_ir_recv registered at minor = 0, raw IR receiver, no transmitter
+[   16.544816] input: gpio_ir_recv as /devices/platform/ir-receiver/rc/rc0/input1
+[   16.548870] dwmmc_rockchip ff5f0000.sdio: IDMAC supports 32-bit address mode.
+[   16.548954] dwmmc_rockchip ff5f0000.sdio: Using internal DMA controller.
+[   16.548971] dwmmc_rockchip ff5f0000.sdio: Version ID is 270a
+[   16.549031] dwmmc_rockchip ff5f0000.sdio: DW MMC controller at irq 43,32 bit host data width,256 deep fifo
+[   16.587504] rockchip-rga ff390000.rga: HW Version: 0x04.00
+[   16.594850] rockchip-iep ff3a0000.iep: Device rockchip-iep registered as /dev/video0
+[   16.597264] dwmmc_rockchip ff5f0000.sdio: IDMAC supports 32-bit address mode.
+[   16.597369] dwmmc_rockchip ff5f0000.sdio: Using internal DMA controller.
+[   16.597386] dwmmc_rockchip ff5f0000.sdio: Version ID is 270a
+[   16.597448] dwmmc_rockchip ff5f0000.sdio: DW MMC controller at irq 43,32 bit host data width,256 deep fifo
+[   16.614475] dwmmc_rockchip ff5f0000.sdio: IDMAC supports 32-bit address mode.
+[   16.614538] dwmmc_rockchip ff5f0000.sdio: Using internal DMA controller.
+[   16.614554] dwmmc_rockchip ff5f0000.sdio: Version ID is 270a
+[   16.614609] dwmmc_rockchip ff5f0000.sdio: DW MMC controller at irq 43,32 bit host data width,256 deep fifo
+[   16.623244] rockchip-rga ff390000.rga: Registered rockchip-rga as /dev/video1
+[   16.627757] dwmmc_rockchip ff5f0000.sdio: IDMAC supports 32-bit address mode.
+[   16.627829] dwmmc_rockchip ff5f0000.sdio: Using internal DMA controller.
+[   16.627844] dwmmc_rockchip ff5f0000.sdio: Version ID is 270a
+[   16.627900] dwmmc_rockchip ff5f0000.sdio: DW MMC controller at irq 43,32 bit host data width,256 deep fifo
+[   16.645960] dwmmc_rockchip ff5f0000.sdio: IDMAC supports 32-bit address mode.
+[   16.646034] dwmmc_rockchip ff5f0000.sdio: Using internal DMA controller.
+[   16.646048] dwmmc_rockchip ff5f0000.sdio: Version ID is 270a
+[   16.646104] dwmmc_rockchip ff5f0000.sdio: DW MMC controller at irq 43,32 bit host data width,256 deep fifo
+[   16.664771] hantro-vpu ff350000.video-codec: registered rockchip,rk3328-vpu-dec as /dev/video3
+[   16.686747] dwmmc_rockchip ff5f0000.sdio: IDMAC supports 32-bit address mode.
+[   16.686835] dwmmc_rockchip ff5f0000.sdio: Using internal DMA controller.
+[   16.686852] dwmmc_rockchip ff5f0000.sdio: Version ID is 270a
+[   16.686926] dwmmc_rockchip ff5f0000.sdio: DW MMC controller at irq 43,32 bit host data width,256 deep fifo
+[   17.646780] dwmmc_rockchip ff5f0000.sdio: IDMAC supports 32-bit address mode.
+[   17.646875] dwmmc_rockchip ff5f0000.sdio: Using internal DMA controller.
+[   17.646891] dwmmc_rockchip ff5f0000.sdio: Version ID is 270a
+[   17.646950] dwmmc_rockchip ff5f0000.sdio: DW MMC controller at irq 43,32 bit host data width,256 deep fifo
+[   17.664651] dwmmc_rockchip ff5f0000.sdio: IDMAC supports 32-bit address mode.
+[   17.664756] dwmmc_rockchip ff5f0000.sdio: Using internal DMA controller.
+[   17.664772] dwmmc_rockchip ff5f0000.sdio: Version ID is 270a
+[   17.664832] dwmmc_rockchip ff5f0000.sdio: DW MMC controller at irq 43,32 bit host data width,256 deep fifo
+[   17.864340] dwmmc_rockchip ff5f0000.sdio: IDMAC supports 32-bit address mode.
+[   17.864421] dwmmc_rockchip ff5f0000.sdio: Using internal DMA controller.
+[   17.864437] dwmmc_rockchip ff5f0000.sdio: Version ID is 270a
+[   17.864504] dwmmc_rockchip ff5f0000.sdio: DW MMC controller at irq 43,32 bit host data width,256 deep fifo
+[   17.980457] systemd[1]: systemd-ask-password-console.path - Dispatch Password Requests to Console Directory Watch was skipped because of an unmet condition check (ConditionPathExists=!/run/plymouth/pid).
+[   17.988630] systemd[1]: Starting modprobe@dm_mod.service - Load Kernel Module dm_mod...
+[   17.999653] systemd[1]: Starting modprobe@efi_pstore.service - Load Kernel Module efi_pstore...
+[   18.015091] systemd[1]: Starting modprobe@loop.service - Load Kernel Module loop...
+[   18.020102] systemd[1]: modprobe@dm_mod.service: Deactivated successfully.
+[   18.028282] systemd[1]: Finished modprobe@dm_mod.service - Load Kernel Module dm_mod.
+[   18.030917] systemd[1]: modprobe@efi_pstore.service: Deactivated successfully.
+[   18.032270] systemd[1]: Finished modprobe@efi_pstore.service - Load Kernel Module efi_pstore.
+[   18.033739] systemd[1]: systemd-pstore.service - Platform Persistent Storage Archival was skipped because of an unmet condition check (ConditionDirectoryNotEmpty=/sys/fs/pstore).
+[   18.038194] systemd[1]: modprobe@loop.service: Deactivated successfully.
+[   18.039361] systemd[1]: Finished modprobe@loop.service - Load Kernel Module loop.
+[   18.040854] systemd[1]: systemd-repart.service - Repartition Root Disk was skipped because no trigger condition checks were met.
+[   18.427988] random: crng init done
+[   18.450072] systemd[1]: Finished systemd-random-seed.service - Load/Save Random Seed.
+[   18.452447] systemd[1]: first-boot-complete.target - First Boot Complete was skipped because of an unmet condition check (ConditionFirstBoot=yes).
+[   18.452782] systemd[1]: systemd-machine-id-commit.service - Commit a transient machine-id on disk was skipped because of an unmet condition check (ConditionPathIsMountPoint=/etc/machine-id).
+[   18.574425] Adding 1009528k swap on /dev/zram0.  Priority:5 extents:1 across:1009528k SS
+[   18.656268] zram1: detected capacity change from 0 to 102400
+[   18.762633] systemd[1]: Finished armbian-zram-config.service - Armbian ZRAM config.
+[   18.773438] systemd[1]: Starting armbian-ramlog.service - Armbian memory supported logging...
+[   18.873569] EXT4-fs (zram1): mounted filesystem c31e64b9-4e66-42fa-88b6-c33d90c4fbdd r/w without journal. Quota mode: none.
+[   21.818028] systemd[1]: Finished armbian-ramlog.service - Armbian memory supported logging.
+[   21.832582] systemd[1]: Starting systemd-journald.service - Journal Service...
+[   22.216965] systemd[1]: Started systemd-journald.service - Journal Service.
+[   22.288521] systemd-journald[496]: Received client request to flush runtime journal.
+[   22.844500] RPC: Registered named UNIX socket transport module.
+[   22.844532] RPC: Registered udp transport module.
+[   22.844540] RPC: Registered tcp transport module.
+[   22.844546] RPC: Registered tcp-with-tls transport module.
+[   22.844553] RPC: Registered tcp NFSv4.1 backchannel transport module.
+[   25.449621] systemd-journald[496]: Received client request to relinquish /var/log/journal/d02287b70a0343c79e0148a2cace46df access.
+[   26.986518] audit: type=1400 audit(1791001034.248:10): apparmor="STATUS" operation="profile_load" profile="unconfined" name="a0d7b954_tailscale" pid=955 comm="apparmor_parser"
+[   27.293231] NOTICE: Automounting of tracing to debugfs is deprecated and will be removed in 2030
+[   29.024166] audit: type=1400 audit(1791001036.284:11): apparmor="STATUS" operation="profile_load" profile="unconfined" name="hassio-supervisor" pid=963 comm="apparmor_parser"
+[   29.024251] audit: type=1400 audit(1791001036.284:12): apparmor="STATUS" operation="profile_load" profile="unconfined" name="hassio-supervisor///usr/bin/git" pid=963 comm="apparmor_parser"
+[   30.852381] rk_gmac-dwmac ff550000.ethernet eth0: Register MEM_TYPE_PAGE_POOL RxQ-0
+[   30.916286] rk_gmac-dwmac ff550000.ethernet eth0: PHY [stmmac-0:00] driver [Rockchip integrated EPHY] (irq=POLL)
+[   30.924190] rk_gmac-dwmac ff550000.ethernet eth0: No Safety Features support found
+[   30.925015] rk_gmac-dwmac ff550000.ethernet eth0: PTP not supported by HW
+[   30.925063] rk_gmac-dwmac ff550000.ethernet eth0: configuring for phy/rmii link mode
+[   32.961290] rk_gmac-dwmac ff550000.ethernet eth0: Link is Up - 100Mbps/Full - flow control off
+[   38.719525] audit: type=1400 audit(1791001045.976:13): apparmor="STATUS" operation="profile_load" profile="unconfined" name="docker-default" pid=1354 comm="apparmor_parser"
+[   47.401051] Initializing XFRM netlink socket
+[   54.687415] hassio: port 1(veth479dd62) entered blocking state
+[   54.687494] hassio: port 1(veth479dd62) entered disabled state
+[   54.687574] veth479dd62: entered allmulticast mode
+[   54.690606] veth479dd62: entered promiscuous mode
+[   54.971467] eth0: renamed from veth4bba584
+[   54.976087] hassio: port 1(veth479dd62) entered blocking state
+[   54.976140] hassio: port 1(veth479dd62) entered forwarding state
+[   62.676165] docker0: port 1(vethc8faae0) entered blocking state
+[   62.676219] docker0: port 1(vethc8faae0) entered disabled state
+[   62.676306] vethc8faae0: entered allmulticast mode
+[   62.677211] vethc8faae0: entered promiscuous mode
+[   62.733258] eth0: renamed from veth5c90208
+[   62.738212] docker0: port 1(vethc8faae0) entered blocking state
+[   62.738278] docker0: port 1(vethc8faae0) entered forwarding state
+[   62.871139] hassio: port 2(veth0e9a398) entered blocking state
+[   62.871258] hassio: port 2(veth0e9a398) entered disabled state
+[   62.871339] veth0e9a398: entered allmulticast mode
+[   62.871840] veth0e9a398: entered promiscuous mode
+[   63.040508] eth1: renamed from veth9357268
+[   63.045356] hassio: port 2(veth0e9a398) entered blocking state
+[   63.045405] hassio: port 2(veth0e9a398) entered forwarding state
+[   79.443326] audit: type=1400 audit(1791001798.845:14): apparmor="STATUS" operation="profile_replace" info="same as current profile, skipping" profile="unconfined" name="hassio-supervisor" pid=2459 comm="apparmor_parser"
+[   79.443389] audit: type=1400 audit(1791001798.845:15): apparmor="STATUS" operation="profile_replace" info="same as current profile, skipping" profile="unconfined" name="hassio-supervisor///usr/bin/git" pid=2459 comm="apparmor_parser"
+[   79.468256] audit: type=1400 audit(1791001798.873:16): apparmor="STATUS" operation="profile_replace" info="same as current profile, skipping" profile="unconfined" name="a0d7b954_tailscale" pid=2461 comm="apparmor_parser"
+[   87.266902] hassio: port 3(veth4be7878) entered blocking state
+[   87.267011] hassio: port 3(veth4be7878) entered disabled state
+[   87.267110] veth4be7878: entered allmulticast mode
+[   87.268031] veth4be7878: entered promiscuous mode
+[   87.483075] eth0: renamed from veth5412ea1
+[   87.488582] hassio: port 3(veth4be7878) entered blocking state
+[   87.488631] hassio: port 3(veth4be7878) entered forwarding state
+[   92.507346] hassio: port 4(veth97c0199) entered blocking state
+[   92.507464] hassio: port 4(veth97c0199) entered disabled state
+[   92.507814] veth97c0199: entered allmulticast mode
+[   92.508636] veth97c0199: entered promiscuous mode
+[   95.487228] eth0: renamed from veth9b2f969
+[   95.491840] hassio: port 4(veth97c0199) entered blocking state
+[   95.491897] hassio: port 4(veth97c0199) entered forwarding state
+[  101.965937] hassio: port 5(vethf2c46ac) entered blocking state
+[  101.966028] hassio: port 5(vethf2c46ac) entered disabled state
+[  101.966123] vethf2c46ac: entered allmulticast mode
+[  101.966654] vethf2c46ac: entered promiscuous mode
+[  102.182206] eth0: renamed from vethc97bca5
+[  102.187438] hassio: port 5(vethf2c46ac) entered blocking state
+[  102.187542] hassio: port 5(vethf2c46ac) entered forwarding state
+[  120.330659] hdmi-audio-codec hdmi-audio-codec.3.auto: HDMI: Unknown ELD version 0
+[  120.343962] hdmi-audio-codec hdmi-audio-codec.3.auto: Only one simultaneous stream supported!
+[  120.344004] hdmi-audio-codec hdmi-audio-codec.3.auto: ASoC error (-22): at snd_soc_dai_startup() on i2s-hifi
+[  120.344040]  ff000000.i2s-i2s-hifi: ASoC error (-22): at __soc_pcm_open() on ff000000.i2s-i2s-hifi
+[  120.351360] hdmi-audio-codec hdmi-audio-codec.3.auto: HDMI: Unknown ELD version 0
+[  120.608948] hassio: port 6(vethe2a44dc) entered blocking state
+[  120.609069] hassio: port 6(vethe2a44dc) entered disabled state
+[  120.609167] vethe2a44dc: entered allmulticast mode
+[  120.611067] vethe2a44dc: entered promiscuous mode
+[  120.861469] eth0: renamed from veth3a186e0
+[  120.866225] hassio: port 6(vethe2a44dc) entered blocking state
+[  120.866281] hassio: port 6(vethe2a44dc) entered forwarding state
+[  139.880499] hassio: port 7(veth80b6968) entered blocking state
+[  139.880564] hassio: port 7(veth80b6968) entered disabled state
+[  139.880651] veth80b6968: entered allmulticast mode
+[  139.881636] veth80b6968: entered promiscuous mode
+[  140.188933] eth0: renamed from veth4ac159a
+[  140.194673] hassio: port 7(veth80b6968) entered blocking state
+[  140.194735] hassio: port 7(veth80b6968) entered forwarding state
+[  147.082446] audit: type=1400 audit(1791001866.486:17): apparmor="DENIED" operation="create" class="net" info="failed af match" error=-13 profile="a0d7b954_tailscale" pid=4538 comm="curl" family="inet6" sock_type="dgram" protocol=0 requested_mask="create" denied_mask="create"
+[  147.084786] audit: type=1400 audit(1791001866.490:18): apparmor="DENIED" operation="create" class="net" info="failed af match" error=-13 profile="a0d7b954_tailscale" pid=4538 comm="curl" family="inet" sock_type="dgram" protocol=17 requested_mask="create" denied_mask="create"
+[  147.084851] audit: type=1400 audit(1791001866.490:19): apparmor="DENIED" operation="create" class="net" info="failed af match" error=-13 profile="a0d7b954_tailscale" pid=4538 comm="curl" family="inet" sock_type="stream" protocol=6 requested_mask="create" denied_mask="create"
+[  282.946556] Bluetooth: Core ver 2.22
+[  282.946986] NET: Registered PF_BLUETOOTH protocol family
+[  282.947008] Bluetooth: HCI device and connection manager initialized
+[  282.947052] Bluetooth: HCI socket layer initialized
+[  282.947068] Bluetooth: L2CAP socket layer initialized
+[  282.947126] Bluetooth: SCO socket layer initialized
+[  327.877337] Bluetooth: BNEP (Ethernet Emulation) ver 1.3
+[  327.877384] Bluetooth: BNEP filters: protocol multicast
+[  327.877418] Bluetooth: BNEP socket layer initialized
+[ 1027.248839] rc rc0: two consecutive events of type space
+[37730.708731] audit: type=1400 audit(1791039450.219:20): apparmor="STATUS" operation="profile_remove" profile="unconfined" name="a0d7b954_tailscale" pid=7965 comm="apparmor_parser"
+[37918.694380] tun: Universal TUN/TAP device driver, 1.6

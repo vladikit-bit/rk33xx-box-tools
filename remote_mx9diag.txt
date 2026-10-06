@@ -1,0 +1,310 @@
+=== uname ===
+Linux homeassistant 6.18.44-current-rockchip64 #1 SMP PREEMPT Sun Aug  9 18:25:30 UTC 2026 aarch64 GNU/Linux
+=== armbianEnv ===
+verbosity=1
+bootlogo=false
+overlay_prefix=rockchip
+fdtfile=rockchip/rk3318-box.dtb
+rootdev=UUID=b82a1580-8fe4-456f-abe4-a32ca973b55e
+rootfstype=ext4
+extraargs=apparmor=1 security=apparmor systemd.unified_cgroup_hierarchy=0
+user_overlays=mx9pro-board
+usbstoragequirks=0x2537:0x1066:u,0x2537:0x1068:u
+=== overlay-user ===
+total 12
+drwxr-xr-x 2 root root 4096 Sep 13 14:46 .
+drwxr-xr-x 5 root root 4096 Oct  3 06:17 ..
+-rw-r--r-- 1 root root 3750 Sep 14 08:07 mx9pro-board.dtbo
+=== dtb dir relevant ===
+-rw-r--r-- 1 root root  65785 Aug 18 06:32 rk3318-box.dtb
+-rw-r--r-- 1 root root  52896 Sep 12 15:32 rk3328-box.dtb
+-rw-r--r-- 1 root root  52896 Sep 12 15:33 rk3328-box.dtb.v6-backup
+=== full dmesg to file ===
+755 /root/mx9dmesg.txt
+=== mmc/sdio/wifi dmesg ===
+[    3.446930] dwc2 ff580000.usb: supply vusb_d not found, using dummy regulator
+[    3.447188] dwc2 ff580000.usb: supply vusb_a not found, using dummy regulator
+[    3.489085] rockchip-pinctrl pinctrl: unable to find group for node mx9-wifi-enable-h
+[    3.491771] dwmmc_rockchip ff5f0000.sdio: IDMAC supports 32-bit address mode.
+[    3.491773] dwmmc_rockchip ff500000.mmc: IDMAC supports 32-bit address mode.
+[    3.491777] dwmmc_rockchip ff520000.mmc: IDMAC supports 32-bit address mode.
+[    3.491847] dwmmc_rockchip ff5f0000.sdio: Using internal DMA controller.
+[    3.491847] dwmmc_rockchip ff500000.mmc: Using internal DMA controller.
+[    3.491847] dwmmc_rockchip ff520000.mmc: Using internal DMA controller.
+[    3.491861] dwmmc_rockchip ff500000.mmc: Version ID is 270a
+[    3.491862] dwmmc_rockchip ff520000.mmc: Version ID is 270a
+[    3.491868] dwmmc_rockchip ff5f0000.sdio: Version ID is 270a
+[    3.492015] dwmmc_rockchip ff520000.mmc: DW MMC controller at irq 41,32 bit host data width,256 deep fifo
+[    3.492050] dwmmc_rockchip ff500000.mmc: DW MMC controller at irq 42,32 bit host data width,256 deep fifo
+[    3.492071] dwmmc_rockchip ff5f0000.sdio: DW MMC controller at irq 43,32 bit host data width,256 deep fifo
+[    3.492556] dwmmc_rockchip ff500000.mmc: Got CD GPIO
+[    3.492985] mmc_host mmc2: card is non-removable.
+[    3.504133] mmc_host mmc0: Bus speed (slot 0) = 400000Hz (slot req 400000Hz, actual 400000HZ div = 0)
+[    3.504135] mmc_host mmc2: Bus speed (slot 0) = 400000Hz (slot req 400000Hz, actual 400000HZ div = 0)
+[    3.557570] mmc_host mmc0: Bus speed (slot 0) = 50000000Hz (slot req 50000000Hz, actual 50000000HZ div = 0)
+[    3.557745] mmc0: new high speed SDHC card at address 0001
+[    3.560208] mmcblk0: mmc0:0001 BB1QT 29.8 GiB
+[    3.564056] dwmmc_rockchip ff5f0000.sdio: IDMAC supports 32-bit address mode.
+[    3.564163] dwmmc_rockchip ff5f0000.sdio: Using internal DMA controller.
+[    3.564182] dwmmc_rockchip ff5f0000.sdio: Version ID is 270a
+[    3.564251] dwmmc_rockchip ff5f0000.sdio: DW MMC controller at irq 43,32 bit host data width,256 deep fifo
+[    3.564988]  mmcblk0: p1
+[    3.568197] dwmmc_rockchip ff5f0000.sdio: IDMAC supports 32-bit address mode.
+[    3.568291] dwmmc_rockchip ff5f0000.sdio: Using internal DMA controller.
+[    3.568307] dwmmc_rockchip ff5f0000.sdio: Version ID is 270a
+[    3.568369] dwmmc_rockchip ff5f0000.sdio: DW MMC controller at irq 43,32 bit host data width,256 deep fifo
+[    4.051481] mmc_host mmc2: Bus speed (slot 0) = 50000000Hz (slot req 52000000Hz, actual 50000000HZ div = 0)
+[    4.054547] mmc2: new high speed MMC card at address 0001
+[    4.057572] mmcblk2: mmc2:0001 SDW16G 14.7 GiB
+[    4.079854]  mmcblk2: p1 p2
+[    4.083230] mmcblk2boot0: mmc2:0001 SDW16G 4.00 MiB
+[    4.097868] mmcblk2boot1: mmc2:0001 SDW16G 4.00 MiB
+[    4.106947] mmcblk2rpmb: mmc2:0001 SDW16G 4.00 MiB, chardev (242:0)
+[    4.110573] dwmmc_rockchip ff5f0000.sdio: IDMAC supports 32-bit address mode.
+[    4.110668] dwmmc_rockchip ff5f0000.sdio: Using internal DMA controller.
+[    4.110685] dwmmc_rockchip ff5f0000.sdio: Version ID is 270a
+[    4.110759] dwmmc_rockchip ff5f0000.sdio: DW MMC controller at irq 43,32 bit host data width,256 deep fifo
+[    4.295809] dwmmc_rockchip ff5f0000.sdio: IDMAC supports 32-bit address mode.
+[    4.295913] dwmmc_rockchip ff5f0000.sdio: Using internal DMA controller.
+[    4.296038] dwmmc_rockchip ff5f0000.sdio: Version ID is 270a
+[    4.296124] dwmmc_rockchip ff5f0000.sdio: DW MMC controller at irq 43,32 bit host data width,256 deep fifo
+[    4.387450] dwmmc_rockchip ff5f0000.sdio: IDMAC supports 32-bit address mode.
+[    4.387548] dwmmc_rockchip ff5f0000.sdio: Using internal DMA controller.
+[    4.387565] dwmmc_rockchip ff5f0000.sdio: Version ID is 270a
+[    4.387633] dwmmc_rockchip ff5f0000.sdio: DW MMC controller at irq 43,32 bit host data width,256 deep fifo
+[    4.458863] dwmmc_rockchip ff5f0000.sdio: IDMAC supports 32-bit address mode.
+[    4.458948] dwmmc_rockchip ff5f0000.sdio: Using internal DMA controller.
+[    4.458964] dwmmc_rockchip ff5f0000.sdio: Version ID is 270a
+[    4.459044] dwmmc_rockchip ff5f0000.sdio: DW MMC controller at irq 43,32 bit host data width,256 deep fifo
+[    4.489482] dwmmc_rockchip ff5f0000.sdio: IDMAC supports 32-bit address mode.
+[    4.489564] dwmmc_rockchip ff5f0000.sdio: Using internal DMA controller.
+[    4.489580] dwmmc_rockchip ff5f0000.sdio: Version ID is 270a
+[    4.489640] dwmmc_rockchip ff5f0000.sdio: DW MMC controller at irq 43,32 bit host data width,256 deep fifo
+[    4.506513] dwmmc_rockchip ff5f0000.sdio: IDMAC supports 32-bit address mode.
+[    4.506595] dwmmc_rockchip ff5f0000.sdio: Using internal DMA controller.
+[    4.506611] dwmmc_rockchip ff5f0000.sdio: Version ID is 270a
+[    4.506673] dwmmc_rockchip ff5f0000.sdio: DW MMC controller at irq 43,32 bit host data width,256 deep fifo
+[   10.718988] EXT4-fs (mmcblk0p1): mounted filesystem b82a1580-8fe4-456f-abe4-a32ca973b55e ro with writeback data mode. Quota mode: none.
+[   13.904172] EXT4-fs (mmcblk0p1): re-mounted b82a1580-8fe4-456f-abe4-a32ca973b55e r/w.
+[   14.563589] dwmmc_rockchip ff5f0000.sdio: IDMAC supports 32-bit address mode.
+[   14.563693] dwmmc_rockchip ff5f0000.sdio: Using internal DMA controller.
+[   14.563713] dwmmc_rockchip ff5f0000.sdio: Version ID is 270a
+[   14.563783] dwmmc_rockchip ff5f0000.sdio: DW MMC controller at irq 43,32 bit host data width,256 deep fifo
+[   16.251322] dwmmc_rockchip ff5f0000.sdio: IDMAC supports 32-bit address mode.
+[   16.251397] dwmmc_rockchip ff5f0000.sdio: Using internal DMA controller.
+[   16.251412] dwmmc_rockchip ff5f0000.sdio: Version ID is 270a
+[   16.251470] dwmmc_rockchip ff5f0000.sdio: DW MMC controller at irq 43,32 bit host data width,256 deep fifo
+[   16.289339] dwhdmi-rockchip ff3c0000.hdmi: supply avdd-0v9 not found, using dummy regulator
+[   16.289662] dwhdmi-rockchip ff3c0000.hdmi: supply avdd-1v8 not found, using dummy regulator
+[   16.297763] dwmmc_rockchip ff5f0000.sdio: IDMAC supports 32-bit address mode.
+[   16.297841] dwmmc_rockchip ff5f0000.sdio: Using internal DMA controller.
+[   16.297856] dwmmc_rockchip ff5f0000.sdio: Version ID is 270a
+[   16.297917] dwmmc_rockchip ff5f0000.sdio: DW MMC controller at irq 43,32 bit host data width,256 deep fifo
+[   16.462285] dwmmc_rockchip ff5f0000.sdio: IDMAC supports 32-bit address mode.
+[   16.462372] dwmmc_rockchip ff5f0000.sdio: Using internal DMA controller.
+[   16.462388] dwmmc_rockchip ff5f0000.sdio: Version ID is 270a
+[   16.462456] dwmmc_rockchip ff5f0000.sdio: DW MMC controller at irq 43,32 bit host data width,256 deep fifo
+[   16.503744] dwmmc_rockchip ff5f0000.sdio: IDMAC supports 32-bit address mode.
+[   16.503820] dwmmc_rockchip ff5f0000.sdio: Using internal DMA controller.
+[   16.503836] dwmmc_rockchip ff5f0000.sdio: Version ID is 270a
+[   16.503895] dwmmc_rockchip ff5f0000.sdio: DW MMC controller at irq 43,32 bit host data width,256 deep fifo
+[   16.507784] dwmmc_rockchip ff5f0000.sdio: IDMAC supports 32-bit address mode.
+[   16.507892] dwmmc_rockchip ff5f0000.sdio: Using internal DMA controller.
+[   16.507908] dwmmc_rockchip ff5f0000.sdio: Version ID is 270a
+[   16.508040] dwmmc_rockchip ff5f0000.sdio: DW MMC controller at irq 43,32 bit host data width,256 deep fifo
+[   16.516099] dwmmc_rockchip ff5f0000.sdio: IDMAC supports 32-bit address mode.
+[   16.516201] dwmmc_rockchip ff5f0000.sdio: Using internal DMA controller.
+[   16.516221] dwmmc_rockchip ff5f0000.sdio: Version ID is 270a
+[   16.516303] dwmmc_rockchip ff5f0000.sdio: DW MMC controller at irq 43,32 bit host data width,256 deep fifo
+[   16.548870] dwmmc_rockchip ff5f0000.sdio: IDMAC supports 32-bit address mode.
+[   16.548954] dwmmc_rockchip ff5f0000.sdio: Using internal DMA controller.
+[   16.548971] dwmmc_rockchip ff5f0000.sdio: Version ID is 270a
+[   16.549031] dwmmc_rockchip ff5f0000.sdio: DW MMC controller at irq 43,32 bit host data width,256 deep fifo
+[   16.597264] dwmmc_rockchip ff5f0000.sdio: IDMAC supports 32-bit address mode.
+[   16.597369] dwmmc_rockchip ff5f0000.sdio: Using internal DMA controller.
+[   16.597386] dwmmc_rockchip ff5f0000.sdio: Version ID is 270a
+[   16.597448] dwmmc_rockchip ff5f0000.sdio: DW MMC controller at irq 43,32 bit host data width,256 deep fifo
+[   16.614475] dwmmc_rockchip ff5f0000.sdio: IDMAC supports 32-bit address mode.
+[   16.614538] dwmmc_rockchip ff5f0000.sdio: Using internal DMA controller.
+[   16.614554] dwmmc_rockchip ff5f0000.sdio: Version ID is 270a
+[   16.614609] dwmmc_rockchip ff5f0000.sdio: DW MMC controller at irq 43,32 bit host data width,256 deep fifo
+[   16.627757] dwmmc_rockchip ff5f0000.sdio: IDMAC supports 32-bit address mode.
+[   16.627829] dwmmc_rockchip ff5f0000.sdio: Using internal DMA controller.
+[   16.627844] dwmmc_rockchip ff5f0000.sdio: Version ID is 270a
+[   16.627900] dwmmc_rockchip ff5f0000.sdio: DW MMC controller at irq 43,32 bit host data width,256 deep fifo
+[   16.645960] dwmmc_rockchip ff5f0000.sdio: IDMAC supports 32-bit address mode.
+[   16.646034] dwmmc_rockchip ff5f0000.sdio: Using internal DMA controller.
+[   16.646048] dwmmc_rockchip ff5f0000.sdio: Version ID is 270a
+[   16.646104] dwmmc_rockchip ff5f0000.sdio: DW MMC controller at irq 43,32 bit host data width,256 deep fifo
+[   16.686747] dwmmc_rockchip ff5f0000.sdio: IDMAC supports 32-bit address mode.
+[   16.686835] dwmmc_rockchip ff5f0000.sdio: Using internal DMA controller.
+[   16.686852] dwmmc_rockchip ff5f0000.sdio: Version ID is 270a
+[   16.686926] dwmmc_rockchip ff5f0000.sdio: DW MMC controller at irq 43,32 bit host data width,256 deep fifo
+[   17.646780] dwmmc_rockchip ff5f0000.sdio: IDMAC supports 32-bit address mode.
+[   17.646875] dwmmc_rockchip ff5f0000.sdio: Using internal DMA controller.
+=== gpio debug ===
+gpiochip0: 32 GPIOs, parent: platform/ff210000.gpio, gpio0:
+ gpio-0   (                    |vcc-host-vbus       ) out hi 
+ gpio-2   (                    |vcc-otg-vbus        ) out hi 
+ gpio-30  (                    |sdmmc-regulator     ) out lo ACTIVE LOW
+
+gpiochip1: 32 GPIOs, parent: platform/ff220000.gpio, gpio1:
+ gpio-5   (                    |cd                  ) in  lo IRQ ACTIVE LOW
+ gpio-18  (                    |reset               ) out lo ACTIVE LOW
+
+gpiochip2: 32 GPIOs, parent: platform/ff230000.gpio, gpio2:
+ gpio-2   (                    |ir-receiver         ) in  hi IRQ ACTIVE LOW
+ gpio-23  (                    |working             ) out hi 
+
+gpiochip3: 32 GPIOs, parent: platform/ff240000.gpio, gpio3:
+
+gpiochip4: 1 GPIOs, parent: platform/ff100000.syscon:gpio, ff100000.syscon:gpio:
+ gpio-0   (                    |mute                ) out hi ACTIVE LOW
+=== pinmux gpio3+ff5f0000 ===
+pin 96 (gpio3-0): (MUX UNCLAIMED) (GPIO UNCLAIMED)
+pin 97 (gpio3-1): (MUX UNCLAIMED) (GPIO UNCLAIMED)
+pin 98 (gpio3-2): (MUX UNCLAIMED) (GPIO UNCLAIMED)
+pin 99 (gpio3-3): (MUX UNCLAIMED) (GPIO UNCLAIMED)
+pin 100 (gpio3-4): (MUX UNCLAIMED) (GPIO UNCLAIMED)
+pin 101 (gpio3-5): (MUX UNCLAIMED) (GPIO UNCLAIMED)
+pin 102 (gpio3-6): (MUX UNCLAIMED) (GPIO UNCLAIMED)
+pin 103 (gpio3-7): (MUX UNCLAIMED) (GPIO UNCLAIMED)
+pin 104 (gpio3-8): (MUX UNCLAIMED) (GPIO UNCLAIMED)
+pin 105 (gpio3-9): (MUX UNCLAIMED) (GPIO UNCLAIMED)
+pin 106 (gpio3-10): (MUX UNCLAIMED) (GPIO UNCLAIMED)
+pin 107 (gpio3-11): (MUX UNCLAIMED) (GPIO UNCLAIMED)
+pin 108 (gpio3-12): (MUX UNCLAIMED) (GPIO UNCLAIMED)
+pin 109 (gpio3-13): (MUX UNCLAIMED) (GPIO UNCLAIMED)
+pin 110 (gpio3-14): (MUX UNCLAIMED) (GPIO UNCLAIMED)
+pin 111 (gpio3-15): (MUX UNCLAIMED) (GPIO UNCLAIMED)
+pin 112 (gpio3-16): ff520000.mmc (GPIO UNCLAIMED) function emmc group emmc-bus8
+pin 113 (gpio3-17): ff520000.mmc (GPIO UNCLAIMED) function emmc group emmc-bus8
+pin 114 (gpio3-18): ff520000.mmc (GPIO UNCLAIMED) function emmc group emmc-bus8
+pin 115 (gpio3-19): ff520000.mmc (GPIO UNCLAIMED) function emmc group emmc-cmd
+pin 116 (gpio3-20): (MUX UNCLAIMED) (GPIO UNCLAIMED)
+pin 117 (gpio3-21): ff520000.mmc (GPIO UNCLAIMED) function emmc group emmc-clk
+pin 118 (gpio3-22): (MUX UNCLAIMED) (GPIO UNCLAIMED)
+pin 119 (gpio3-23): (MUX UNCLAIMED) (GPIO UNCLAIMED)
+pin 120 (gpio3-24): (MUX UNCLAIMED) (GPIO UNCLAIMED)
+pin 121 (gpio3-25): (MUX UNCLAIMED) (GPIO UNCLAIMED)
+pin 122 (gpio3-26): (MUX UNCLAIMED) (GPIO UNCLAIMED)
+pin 123 (gpio3-27): (MUX UNCLAIMED) (GPIO UNCLAIMED)
+pin 124 (gpio3-28): (MUX UNCLAIMED) (GPIO UNCLAIMED)
+pin 125 (gpio3-29): (MUX UNCLAIMED) (GPIO UNCLAIMED)
+pin 126 (gpio3-30): (MUX UNCLAIMED) (GPIO UNCLAIMED)
+pin 127 (gpio3-31): (MUX UNCLAIMED) (GPIO UNCLAIMED)
+=== regulators ===
+regulator.0: name=regulator-dummy uv= state=
+regulator.1: name=vccio_1v8 uv=1800000 state=
+regulator.2: name=vccio_3v3 uv=3300000 state=
+regulator.3: name=vcc_phy uv=1800000 state=
+regulator.4: name=vcc_sys uv=5000000 state=
+regulator.5: name=vcc_sd uv=3300000 state=enabled
+regulator.6: name=vcc_host_vbus uv=5000000 state=enabled
+regulator.7: name=vcc_otg_vbus uv=5000000 state=enabled
+regulator.8: name=vdd_arm uv=1098500 state=enabled
+regulator.9: name=vdd_log uv=1076000 state=enabled
+=== lsmod ===
+Module                  Size  Used by
+xt_connmark            12288  6
+xt_mark                12288  2
+tun                    57344  2
+bnep                   28672  2
+bluetooth             720896  9 bnep
+veth                   36864  0
+nf_conntrack_netlink    49152  0
+xt_nat                 12288  38
+xt_tcpudp              16384  0
+xt_conntrack           12288  7
+xt_MASQUERADE          16384  5
+xfrm_user              53248  1
+xfrm_algo              12288  1 xfrm_user
+xt_set                 20480  0
+ip_set                 49152  1 xt_set
+nft_chain_nat          12288  20
+nf_nat                 45056  3 xt_nat,nft_chain_nat,xt_MASQUERADE
+nf_conntrack          126976  6 xt_conntrack,nf_nat,xt_nat,nf_conntrack_netlink,xt_connmark,xt_MASQUERADE
+nf_defrag_ipv6         20480  1 nf_conntrack
+nf_defrag_ipv4         12288  1 nf_conntrack
+xt_addrtype            12288  4
+nft_compat             16384  62
+nf_tables             253952  782 nft_compat,nft_chain_nat
+nfnetlink              16384  5 nft_compat,nf_conntrack_netlink,nf_tables,ip_set
+rfkill                 28672  3 bluetooth
+overlay               159744  10
+sunrpc                520192  1
+snd_soc_hdmi_codec     20480  1
+dw_hdmi_i2s_audio      12288  0
+dw_hdmi_cec            12288  0
+hantro_vpu            262144  0
+snd_soc_spdif_tx       12288  1
+rockchip_vdec         102400  0
+v4l2_jpeg              12288  1 hantro_vpu
+v4l2_vp9               20480  2 rockchip_vdec,hantro_vpu
+rockchip_iep           16384  0
+v4l2_h264              16384  2 rockchip_vdec,hantro_vpu
+rockchip_rga           20480  0
+videobuf2_dma_contig    20480  3 rockchip_vdec,hantro_vpu,rockchip_iep
+gpio_ir_recv           12288  0
+v4l2_mem2mem           28672  4 rockchip_vdec,hantro_vpu,rockchip_rga,rockchip_iep
+snd_soc_simple_card    20480  8
+videobuf2_dma_sg       16384  1 rockchip_rga
+rc_core                49152  2 gpio_ir_recv
+snd_soc_rk3328         12288  1
+snd_soc_rockchip_i2s    24576  4
+snd_soc_rockchip_spdif    12288  2
+videobuf2_memops       16384  2 videobuf2_dma_contig,videobuf2_dma_sg
+snd_soc_simple_card_utils    24576  1 snd_soc_simple_card
+videobuf2_v4l2         20480  5 rockchip_vdec,hantro_vpu,rockchip_rga,rockchip_iep,v4l2_mem2mem
+snd_soc_core          217088  7 snd_soc_spdif_tx,snd_soc_hdmi_codec,snd_soc_rockchip_spdif,snd_soc_rk3328,snd_soc_simple_card_utils,snd_soc_rockchip_i2s,snd_soc_simple_card
+videodev              253952  6 rockchip_vdec,videobuf2_v4l2,hantro_vpu,rockchip_rga,rockchip_iep,v4l2_mem2mem
+snd_compress           24576  1 snd_soc_core
+snd_pcm_dmaengine      12288  1 snd_soc_core
+videobuf2_common       53248  9 rockchip_vdec,videobuf2_dma_contig,videobuf2_v4l2,hantro_vpu,rockchip_rga,videobuf2_dma_sg,rockchip_iep,v4l2_mem2mem,videobuf2_memops
+mc                     53248  6 rockchip_vdec,videodev,videobuf2_v4l2,hantro_vpu,videobuf2_common,v4l2_mem2mem
+snd_pcm               122880  9 snd_soc_hdmi_codec,snd_compress,snd_soc_simple_card_utils,snd_soc_core,snd_pcm_dmaengine
+nvmem_rockchip_efuse    12288  0
+snd_timer              40960  1 snd_pcm
+rk_crypto              28672  0
+snd                    86016  17 snd_soc_hdmi_codec,snd_timer,snd_compress,snd_soc_core,snd_pcm
+sha1                   12288  1 rk_crypto
+soundcore              12288  1 snd
+rng_core               20480  1 rk_crypto
+zram                   45056  2
+842_decompress         16384  1 zram
+842_compress           20480  1 zram
+lz4hc_compress         20480  1 zram
+lz4_compress           24576  1 zram
+binfmt_misc            20480  1
+dm_mod                139264  0
+ip_tables              28672  0
+x_tables               36864  10 xt_conntrack,nft_compat,xt_tcpudp,xt_addrtype,xt_nat,xt_set,xt_connmark,ip_tables,xt_MASQUERADE,xt_mark
+autofs4                45056  2
+btrfs                1564672  0
+blake2b_generic        16384  0
+xor                    12288  1 btrfs
+xor_neon               16384  1 xor
+raid6_pq               94208  1 btrfs
+rockchipdrm           212992  0
+dw_hdmi_qp             20480  1 rockchipdrm
+lima                   65536  0
+gpu_sched              45056  1 lima
+drm_shmem_helper       24576  1 lima
+dw_dp                  24576  1 rockchipdrm
+dw_mipi_dsi            16384  1 rockchipdrm
+dw_mipi_dsi2           16384  1 rockchipdrm
+dw_hdmi                49152  2 dw_hdmi_i2s_audio,rockchipdrm
+gpio_syscon            16384  1
+analogix_dp            45056  1 rockchipdrm
+drm_display_helper    143360  5 rockchipdrm,dw_hdmi,analogix_dp,dw_hdmi_qp,dw_dp
+cec                    49152  3 dw_hdmi_cec,drm_display_helper,dw_hdmi
+drm_dp_aux_bus         12288  1 rockchipdrm
+adc_keys               12288  0
+=== rfkill ===
+=== live tree dump ===
+3079 /root/live-tree.dts
+=== stock dtb dump ===
+3006 /root/stock-rk3318-box.dts
+=== installed overlay dump ===
+209 /root/installed-mx9pro-board.dts
+=== DONE ===
